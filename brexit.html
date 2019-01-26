@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<title>Brexit Countdown</title>
+<head>
+<link rel="shortcut icon" href="flag.png">
+</head>
+<body>
+<style>
+body {
+  font-family: "Lato", sans-serif;
+  overflow: hidden;
+}
+</style>
+<div>
+  <h2>Brexit Countdown</h2>
+  <p style="display: inline-block;">Today's date: </p> <p id="today_display" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
+  <p style="display: inline-block;">Brexit date: </p> <p id="brexit_display" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
+
+  <p style="display: inline-block;">Hours left: </p> <p id="hours_left" style="display: inline-block;"> Loading...</p><br>
+  <p style="display: inline-block;">Days left: </p> <p id="days_left" style="display: inline-block;"> Loading...</p><br>
+
+<img class="heads" style="margin-top: 30%; display: inline-block; width: 30%;" id=headOne src="theresa.png" width="500">
+<img class="heads" style="margin-top: 30%; display: inline-block; width: 30%;" id=headTwo src="boris.png" width="500">
+<img class="heads" style="margin-top: 30%; display: inline-block; width: 30%;" id=headThree src="nigel.png" width="500">
+</div>
+
+<script>
+
+var today = new Date();
+var brexit_string = new Date(today.getFullYear(), 2, 29); //Month, Day, Hour
+var brexit_fixed = '29/03/19'
+var dd = today.getDate();
+var mm = today.getMonth()+1;
+var yy = today.getYear()-100;
+if(dd<10) {
+    dd = '0'+dd
+} 
+if(mm<10) {
+    mm = '0'+mm
+}
+if(yy<10) {
+    yy = '0'+yy
+}
+today = dd + '/' + mm + '/' + yy;
+document.getElementById("today_display").innerHTML = today;
+document.getElementById("brexit_display").innerHTML = brexit_fixed;
+
+if(today == brexit_fixed) {
+  window.alert('Britain has now officially screwed itself over...'); 
+}
+
+var today = new Date();
+
+setTimeout(update, 1000);
+function update() {
+  update_hours()
+  update_days()
+  setTimeout(update, 1000);
+}
+function update_hours() {
+  var today = new Date();
+  var hours_left
+  var days_left
+  var one_hour=1000*60*60;
+  var one_day=1000*60*60*24;
+  days_left = Math.ceil((brexit_string.getTime()-today.getTime())/(one_day));
+  hours_left = Math.ceil((brexit_string.getTime()-today.getTime())/(one_hour)-((days_left - 1) * 24));
+  document.getElementById("hours_left").innerHTML = hours_left;
+}
+function update_days() {
+  var today = new Date();
+  var days_left
+  var one_day=1000*60*60*24;
+  days_left = Math.ceil((brexit_string.getTime()-today.getTime())/(one_day));
+  document.getElementById("days_left").innerHTML = days_left;
+}
+</script>
+<script>
+var headOneUp
+var headTwoUp
+var headThreeUp
+var runOneAgain
+var runTwoAgain
+var runThreeAgain
+setTimeout(peak, 1000);
+function peak() {
+  var chooseHead = Math.floor((Math.random() * 3) + 1);
+  if (chooseHead == '1') {
+    if (headOneUp == '1') {
+      headOneReverse()
+    }
+    if (headOneUp = '0') {
+      if (runOneAgain == '0') {
+        headOne()
+      }
+    }
+    runOneAgain = 0
+  }
+  if (chooseHead == '2') {
+    if (headTwoUp == '1') {
+      headTwoReverse()
+    }
+    if (headTwoUp = '0') {
+      if (runTwoAgain == '0') {
+        headTwo()
+      }
+    }
+    runTwoAgain = 0
+  }
+  if (chooseHead == '3') {
+    if (headThreeUp == '1') {
+      headThreeReverse()
+    }
+    if (headThreeUp = '0') {
+      if (runThreeAgain == '0') {
+        headThree()
+      }
+    }
+    runThreeAgain = 0
+  }
+  setTimeout(peak, 3500);
+}
+function headOne() {
+    document.getElementById("headOne").animate([
+    // keyframes
+    { transform: 'translateY(0px)' }, 
+    { transform: 'translateY(-250px)' }
+  ], { 
+    // timing options
+    duration: 2000,
+    fill: "forwards",
+    iterations: 1
+  });
+  headOneUp = '1';
+}
+function headOneReverse() {
+    document.getElementById("headOne").animate([
+    // keyframes
+    { transform: 'translateY(0px)' }, 
+    { transform: 'translateY(-250px)' }
+  ], { 
+    // timing options
+    duration: 2000,
+    fill: "forwards",
+    direction: "reverse",
+    iterations: 1
+  });
+    headOneUp = '0';
+    runOneAgain = '1';
+}
+function headTwo() {
+    document.getElementById("headTwo").animate([
+    // keyframes
+    { transform: 'translateY(0px)' }, 
+    { transform: 'translateY(-250px)' }
+  ], { 
+    // timing options
+    duration: 2000,
+    fill: "forwards",
+    iterations: 1
+  });
+  headTwoUp = '1';
+}
+function headTwoReverse() {
+    document.getElementById("headTwo").animate([
+    // keyframes
+    { transform: 'translateY(0px)' }, 
+    { transform: 'translateY(-250px)' }
+  ], { 
+    // timing options
+    duration: 2000,
+    fill: "forwards",
+    direction: "reverse",
+    iterations: 1
+  });
+    headTwoUp = '0';
+    runTwoAgain = '1';
+}
+function headThree() {
+    document.getElementById("headThree").animate([
+    // keyframes
+    { transform: 'translateY(0px)' }, 
+    { transform: 'translateY(-250px)' }
+  ], { 
+    // timing options
+    duration: 2000,
+    fill: "forwards",
+    iterations: 1
+  });
+  headThreeUp = '1';
+}
+function headThreeReverse() {
+    document.getElementById("headThree").animate([
+    // keyframes
+    { transform: 'translateY(0px)' }, 
+    { transform: 'translateY(-250px)' }
+  ], { 
+    // timing options
+    duration: 2000,
+    fill: "forwards",
+    direction: "reverse",
+    iterations: 1
+  });
+    headThreeUp = '0';
+    runThreeAgain = '1';
+}
+</script>
+</body>
+</html> 
+
