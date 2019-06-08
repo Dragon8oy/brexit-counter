@@ -10,12 +10,12 @@ body {
   font-family: "Lato", sans-serif;
   overflow: hidden;
   color: white;
+  height: 100%;
 }
 html {
   background-color: #38373a;
 }
 .heads {
-  margin-bottom: -60%;
   display: inline-block;
   width: 33%;
 }
@@ -27,16 +27,16 @@ html {
 
   <p style="display: inline-block;">Hours left: </p> <p id="hours_left" style="display: inline-block;"> Loading...</p><br>
   <p style="display: inline-block;">Days left: </p> <p id="days_left" style="display: inline-block;"> Loading...</p><br>
-
-<img class="heads" id=headOne src="theresa.png" width="500">
-<img class="heads" id=headTwo src="boris.png" width="500">
-<img class="heads" id=headThree src="nigel.png" width="500">
+</div>
+<div style="position: fixed; bottom: 0px;">
+  <img class="heads" id=headOne src="theresa.png">
+  <img class="heads" id=headTwo src="boris.png">
+  <img class="heads" id=headThree src="nigel.png">
 </div>
 
 <script>
-
 var today = new Date();
-var brexit_string = new Date(today.getFullYear(), 9, 31); //Month, Day, Hour
+var brexit_string = new Date(today.getFullYear(), 9, 30, 12); //Month, Day, Hour
 var brexit_fixed = '31/10/19'
 var dd = today.getDate();
 var mm = today.getMonth()+1;
@@ -93,7 +93,8 @@ var runTwoAgain
 var runThreeAgain
 setTimeout(peak, 1000);
 function peak() {
-  var chooseHead = Math.floor((Math.random() * 3) + 1);
+  //var chooseHead = Math.floor((Math.random() * 3) + 1);
+  var chooseHead = 1
   if (chooseHead == '1') {
     if (headOneUp == '1') {
       headOneReverse()
@@ -132,8 +133,8 @@ function peak() {
 function headOne() {
     document.getElementById("headOne").animate([
     // keyframes
-    { transform: 'translateY(0px)' }, 
-    { transform: 'translateY(-80%)' }
+    { transform: 'translateY(500px)' }, //From here (Negatives)
+    { transform: 'translateY(0)' } //To here (- Means positive)                                      The head needs to start 500px lower so it needs to animate 500 px higher. Offset it with the top CSS property, calculated from js so it reaches 500px off screen, every screen
   ], { 
     // timing options
     duration: 2000,
@@ -145,8 +146,8 @@ function headOne() {
 function headOneReverse() {
     document.getElementById("headOne").animate([
     // keyframes
-    { transform: 'translateY(0px)' }, 
-    { transform: 'translateY(-80%)' }
+    { transform: 'translateY(500px)' }, 
+    { transform: 'translateY(0)' }
   ], { 
     // timing options
     duration: 2000,
@@ -161,7 +162,7 @@ function headTwo() {
     document.getElementById("headTwo").animate([
     // keyframes
     { transform: 'translateY(0px)' }, 
-    { transform: 'translateY(-40%)' }
+    { transform: 'translateY(-80%)' }
   ], { 
     // timing options
     duration: 2000,
@@ -174,7 +175,7 @@ function headTwoReverse() {
     document.getElementById("headTwo").animate([
     // keyframes
     { transform: 'translateY(0px)' }, 
-    { transform: 'translateY(-40%)' }
+    { transform: 'translateY(-80%)' }
   ], { 
     // timing options
     duration: 2000,
@@ -189,7 +190,7 @@ function headThree() {
     document.getElementById("headThree").animate([
     // keyframes
     { transform: 'translateY(0px)' }, 
-    { transform: 'translateY(-40%)' }
+    { transform: 'translateY(-80%)' }
   ], { 
     // timing options
     duration: 2000,
@@ -202,7 +203,7 @@ function headThreeReverse() {
     document.getElementById("headThree").animate([
     // keyframes
     { transform: 'translateY(0px)' }, 
-    { transform: 'translateY(-40%)' }
+    { transform: 'translateY(-80%)' }
   ], { 
     // timing options
     duration: 2000,
