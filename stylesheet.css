@@ -1,11 +1,8 @@
 body {
   font-family: "Lato", sans-serif;
-  overflow: hidden;
-  color: white;
-  height: 100%;
-}
-html {
   background-color: #38373a;
+  overflow: hidden;
+  height: 100%;
 }
 
 ::selection { /*Common*/
@@ -38,7 +35,6 @@ html {
   display: inline-block;
   width: 33%;
 }
-
 
 /* The switch - the box around the slider */
 .switch {
@@ -97,6 +93,7 @@ input:checked + .slider:before {
 /* Rounded sliders */
 .slider.round {
   border-radius: 34px;
+  border: 2px solid black
 }
 
 .slider.round:before {

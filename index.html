@@ -13,13 +13,16 @@
 
   <p style="display: inline-block;">Hours left: </p> <p id="hours_left" style="display: inline-block;"> Loading...</p><br>
   <p style="display: inline-block;">Days left: </p> <p id="days_left" style="display: inline-block;"> Loading...</p><br>
-
-<label class="switch">
-  <input type="checkbox">
-  <span class="slider round"></span>
-</label>
-
 </div>
+
+<div style="position: fixed; top: 5px; right: 5px;">
+  <h3 style="display: inline-block; vertical-align: middle;">Dark theme: </h3>
+  <label class="switch" style="display: inline-block; vertical-align: middle;">
+    <input type="checkbox" id="slider" onclick="toggleThemeSlider()">
+    <span class="slider round"></span>
+  </label>
+</div>
+
 <div class="headContainer">
   <img class="heads" id=headOne src="theresa.png">
   <img class="heads" id=headTwo src="boris.png">
@@ -27,14 +30,54 @@
 </div>
 
 <script>
+setInterval(function() {
 document.getElementById('headOne').style.width=(window.innerWidth / 3.4) + 'px';
 document.getElementById('headTwo').style.width=(window.innerWidth / 3.4) + 'px';
-document.getElementById('headThree').style.width=(window.innerWidth / 3.4) + 'px';
+document.getElementById('headThree').style.width=(window.innerWidth / 3.4) + 'px';}, 1000)
 </script>
 <script>
-//Automatically set slider state from cache and call theme changer, set cache is missing
-//Function to change set browser cache for theme and call theme changer on toggle
-//Theme changer function to read in browser cache and change it, default to dark theme is cache is missing and set cache
+setSlider()
+toggleTheme()
+function readSavedTheme() {
+  var theme = window.localStorage['theme'];
+  if (theme == undefined) {
+    window.localStorage['theme'] = 'dark';
+    theme = 'dark'
+  }
+  return theme
+}
+
+function setSlider() {
+  var theme = readSavedTheme()
+  if (theme == 'dark') {
+    document.getElementById('slider').checked = true;
+  } else {
+    document.getElementById('slider').checked = false;
+  }
+}
+
+function toggleThemeSlider() {
+  var theme = readSavedTheme()
+  if (theme == 'dark') {
+    window.localStorage['theme'] = 'light';
+  } else {
+    window.localStorage['theme'] = 'dark';
+  }
+  toggleTheme()
+}
+
+function toggleTheme() {
+  var theme = readSavedTheme();
+  if (theme == 'dark') {
+    //Set theme to dark
+    document.body.style.backgroundColor = '#38373a';
+    document.body.style.color = 'white';
+  } else {
+    //Set theme to light
+    document.body.style.backgroundColor = 'white';
+    document.body.style.color = 'black';
+  }
+}
 
 </script>
 <script>
