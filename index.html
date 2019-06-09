@@ -79,7 +79,7 @@ function toggleTheme() {
 <script>
 var today = new Date();
 var brexit_string = new Date(today.getFullYear(), 9, 30, 12); //Month, Day, Hour
-var brexit_fixed = '09/07/19'
+var brexit_fixed = '31/10/19'
 var dd = today.getDate();
 var mm = today.getMonth()+1;
 var yy = today.getYear()-100;
@@ -146,9 +146,9 @@ function display_time() {
 }
 </script>
 <script>
-headOneReverse()
-headTwoReverse()
-headThreeReverse()
+animateHead('headOne', 'reverse') //headOneReverse()
+animateHead('headTwo', 'reverse') //headTwoReverse()
+animateHead('headThree', 'reverse') //headThreeReverse()
 var headOneUp
 var headTwoUp
 var headThreeUp
@@ -160,122 +160,70 @@ function peak() {
   var chooseHead = Math.floor((Math.random() * 3) + 1);
   if (chooseHead == '1') {
     if (headOneUp == '1') {
-      headOneReverse()
+      animateHead('headOne', 'reverse')
     }
     if (headOneUp = '0') {
       if (runOneAgain == '0') {
-        headOne()
+        animateHead('headOne', 'normal')
       }
     }
     runOneAgain = 0
   }
   if (chooseHead == '2') {
     if (headTwoUp == '1') {
-      headTwoReverse()
+      animateHead('headTwo', 'reverse')
     }
     if (headTwoUp = '0') {
       if (runTwoAgain == '0') {
-        headTwo()
+        animateHead('headTwo', 'normal')
       }
     }
     runTwoAgain = 0
   }
   if (chooseHead == '3') {
     if (headThreeUp == '1') {
-      headThreeReverse()
+      animateHead('headThree', 'reverse')
     }
     if (headThreeUp = '0') {
       if (runThreeAgain == '0') {
-        headThree()
+        animateHead('headThree', 'normal')
       }
     }
     runThreeAgain = 0
   }
   setTimeout(peak, 3500);
 }
-function headOne() {
-    document.getElementById("headOne").animate([
+
+function animateHead(targetHead, direction) {
+    document.getElementById(targetHead).animate([
     // keyframes
     { transform: 'translateY(500px)' }, //From here (Negatives)
     { transform: 'translateY(50px)' } //To here (- Means positive)
   ], { 
     // timing options
     duration: 2000,
-    fill: "forwards",
+    fill: 'forwards',
+    direction: direction,
     iterations: 1
   });
-  headOneUp = '1';
-}
-function headOneReverse() {
-    document.getElementById("headOne").animate([
-    // keyframes
-    { transform: 'translateY(500px)' }, //From here (Negatives)
-    { transform: 'translateY(50px)' } //To here (- Means positive)
-  ], { 
-    // timing options
-    duration: 2000,
-    fill: "forwards",
-    direction: "reverse",
-    iterations: 1
-  });
-    headOneUp = '0';
-    runOneAgain = '1';
-}
-function headTwo() {
-    document.getElementById("headTwo").animate([
-    // keyframes
-    { transform: 'translateY(500px)' }, //From here (Negatives)
-    { transform: 'translateY(50px)' } //To here (- Means positive)
-  ], { 
-    // timing options
-    duration: 2000,
-    fill: "forwards",
-    iterations: 1
-  });
-  headTwoUp = '1';
-}
-function headTwoReverse() {
-    document.getElementById("headTwo").animate([
-    // keyframes
-    { transform: 'translateY(500px)' }, //From here (Negatives)
-    { transform: 'translateY(50px)' } //To here (- Means positive)
-  ], { 
-    // timing options
-    duration: 2000,
-    fill: "forwards",
-    direction: "reverse",
-    iterations: 1
-  });
-    headTwoUp = '0';
-    runTwoAgain = '1';
-}
-function headThree() {
-    document.getElementById("headThree").animate([
-    // keyframes
-    { transform: 'translateY(500px)' }, //From here (Negatives)
-    { transform: 'translateY(50px)' } //To here (- Means positive)
-  ], { 
-    // timing options
-    duration: 2000,
-    fill: "forwards",
-    iterations: 1
-  });
-  headThreeUp = '1';
-}
-function headThreeReverse() {
-    document.getElementById("headThree").animate([
-    // keyframes
-    { transform: 'translateY(500px)' }, //From here (Negatives)
-    { transform: 'translateY(50px)' } //To here (- Means positive)
-  ], { 
-    // timing options
-    duration: 2000,
-    fill: "forwards",
-    direction: "reverse",
-    iterations: 1
-  });
-    headThreeUp = '0';
-    runThreeAgain = '1';
+  if (direction == 'normal') {
+    if (targetHead == 'headOne') {headOneUp = '1';};
+    if (targetHead == 'headTwo') {headTwoUp = '1';};
+    if (targetHead == 'headThree') {headThreeUp = '1';};
+  } else {
+    if (targetHead == 'headOne') {
+      headOneUp = '0';
+      runOneAgain = '1';
+    };
+    if (targetHead == 'headTwo') {
+      headTwoUp = '0';
+      runTwoAgain = '1';
+    };
+    if (targetHead == 'headThree') {
+      headThreeUp = '0';
+      runThreeAgain = '1';
+    };
+  }
 }
 </script>
 </body>
