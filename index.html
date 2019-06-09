@@ -96,8 +96,16 @@ today = dd + '/' + mm + '/' + yy;
 document.getElementById("today_display").innerHTML = today;
 document.getElementById("brexit_display").innerHTML = brexit_fixed;
 
-if(today == brexit_fixed) {
-  window.alert('Britain actually left the EU...'); 
+today_array = today.replace('/', '').replace('/', '').split("")
+brexit_array = brexit_fixed.replace('/', '').replace('/', '').split("")
+
+for (i = 0; i < 6; i++) {
+  if (today_array[i] < brexit_array[i]) {
+    break
+  }
+  if (i == 5) {
+    window.alert('Britain actually left the EU...'); 
+  }
 }
 
 var today = new Date();
