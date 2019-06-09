@@ -79,7 +79,7 @@ function toggleTheme() {
 <script>
 var today = new Date();
 var brexit_string = new Date(today.getFullYear(), 9, 30, 12); //Month, Day, Hour
-var brexit_fixed = '31/10/19'
+var brexit_fixed = '09/07/19'
 var dd = today.getDate();
 var mm = today.getMonth()+1;
 var yy = today.getYear()-100;
@@ -99,12 +99,20 @@ document.getElementById("brexit_display").innerHTML = brexit_fixed;
 today_array = today.replace('/', '').replace('/', '').split("")
 brexit_array = brexit_fixed.replace('/', '').replace('/', '').split("")
 
-for (i = 0; i < 6; i++) {
-  if (today_array[i] < brexit_array[i]) {
-    break
+checkDate()
+function checkDate() {
+  for (i = 2; i < 6; i++) {
+    if (today_array[i] < brexit_array[i]) {
+      return
+    }
   }
-  if (i == 5) {
-    window.alert('Britain actually left the EU...'); 
+  for (i = 0; i < 2; i++) {
+    if (today_array[i] < brexit_array[i]) {
+      return
+    }
+    if (i == 1) {
+      window.alert('Britain actually left the EU...');
+    }
   }
 }
 
