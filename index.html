@@ -28,11 +28,16 @@ html {
   <p style="display: inline-block;">Hours left: </p> <p id="hours_left" style="display: inline-block;"> Loading...</p><br>
   <p style="display: inline-block;">Days left: </p> <p id="days_left" style="display: inline-block;"> Loading...</p><br>
 </div>
-<div style="position: fixed; bottom: 0px;">
+<div style="position: fixed; bottom: 0px; width: 100%;">
   <img class="heads" id=headOne src="theresa.png">
   <img class="heads" id=headTwo src="boris.png">
   <img class="heads" id=headThree src="nigel.png">
 </div>
+
+<script>
+window.alert(window.innerWidth / 3.3)
+document.getElementById('headOne').style.width=(window.innerWidth / 3.4) + 'px';
+</script>
 
 <script>
 var today = new Date();
@@ -85,6 +90,9 @@ function update_days() {
 }
 </script>
 <script>
+headOneReverse()
+headTwoReverse()
+headThreeReverse()
 var headOneUp
 var headTwoUp
 var headThreeUp
@@ -93,8 +101,7 @@ var runTwoAgain
 var runThreeAgain
 setTimeout(peak, 1000);
 function peak() {
-  //var chooseHead = Math.floor((Math.random() * 3) + 1);
-  var chooseHead = 1
+  var chooseHead = Math.floor((Math.random() * 3) + 1);
   if (chooseHead == '1') {
     if (headOneUp == '1') {
       headOneReverse()
@@ -134,7 +141,7 @@ function headOne() {
     document.getElementById("headOne").animate([
     // keyframes
     { transform: 'translateY(500px)' }, //From here (Negatives)
-    { transform: 'translateY(0)' } //To here (- Means positive)                                      The head needs to start 500px lower so it needs to animate 500 px higher. Offset it with the top CSS property, calculated from js so it reaches 500px off screen, every screen
+    { transform: 'translateY(50px)' } //To here (- Means positive)
   ], { 
     // timing options
     duration: 2000,
@@ -146,8 +153,8 @@ function headOne() {
 function headOneReverse() {
     document.getElementById("headOne").animate([
     // keyframes
-    { transform: 'translateY(500px)' }, 
-    { transform: 'translateY(0)' }
+    { transform: 'translateY(500px)' }, //From here (Negatives)
+    { transform: 'translateY(50px)' } //To here (- Means positive)
   ], { 
     // timing options
     duration: 2000,
@@ -161,8 +168,8 @@ function headOneReverse() {
 function headTwo() {
     document.getElementById("headTwo").animate([
     // keyframes
-    { transform: 'translateY(0px)' }, 
-    { transform: 'translateY(-80%)' }
+    { transform: 'translateY(500px)' }, //From here (Negatives)
+    { transform: 'translateY(50px)' } //To here (- Means positive)
   ], { 
     // timing options
     duration: 2000,
@@ -174,8 +181,8 @@ function headTwo() {
 function headTwoReverse() {
     document.getElementById("headTwo").animate([
     // keyframes
-    { transform: 'translateY(0px)' }, 
-    { transform: 'translateY(-80%)' }
+    { transform: 'translateY(500px)' }, //From here (Negatives)
+    { transform: 'translateY(50px)' } //To here (- Means positive)
   ], { 
     // timing options
     duration: 2000,
@@ -189,8 +196,8 @@ function headTwoReverse() {
 function headThree() {
     document.getElementById("headThree").animate([
     // keyframes
-    { transform: 'translateY(0px)' }, 
-    { transform: 'translateY(-80%)' }
+    { transform: 'translateY(500px)' }, //From here (Negatives)
+    { transform: 'translateY(50px)' } //To here (- Means positive)
   ], { 
     // timing options
     duration: 2000,
@@ -202,8 +209,8 @@ function headThree() {
 function headThreeReverse() {
     document.getElementById("headThree").animate([
     // keyframes
-    { transform: 'translateY(0px)' }, 
-    { transform: 'translateY(-80%)' }
+    { transform: 'translateY(500px)' }, //From here (Negatives)
+    { transform: 'translateY(50px)' } //To here (- Means positive)
   ], { 
     // timing options
     duration: 2000,
