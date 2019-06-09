@@ -2,51 +2,10 @@
 <html>
 <title>Brexit Countdown</title>
 <head>
-<link rel="shortcut icon" href="flag.png">
+  <link rel="shortcut icon" href="flag.png">
+  <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-<style>
-body {
-  font-family: "Lato", sans-serif;
-  overflow: hidden;
-  color: white;
-  height: 100%;
-}
-html {
-  background-color: #38373a;
-}
-
-::selection { /*Common*/
-    background-color: #4ace4f;
-}
-::-moz-selection { /*Mozilla*/
-    background-color: #4ace4f;
-}
-::-o-selection { /*Other*/
-    background-color: #4ace4f;
-}
-::-ms-selection { /*Internet Explorer*/
-    background-color: #4ace4f;
-}
-::-webkit-selection { /*Webkit*/
-    background-color: #4ace4f;
-}
-.headContainer {
-  position: fixed;
-  bottom: 0px;
-  width: 100%;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.heads {
-  display: inline-block;
-  width: 33%;
-}
-</style>
 <div>
   <h1>Brexit Countdown</h1>
   <p style="display: inline-block;">Today's date: </p> <p id="today_display" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
@@ -55,7 +14,11 @@ html {
   <p style="display: inline-block;">Hours left: </p> <p id="hours_left" style="display: inline-block;"> Loading...</p><br>
   <p style="display: inline-block;">Days left: </p> <p id="days_left" style="display: inline-block;"> Loading...</p><br>
 
-  <>
+<label class="switch">
+  <input type="checkbox">
+  <span class="slider round"></span>
+</label>
+
 </div>
 <div class="headContainer">
   <img class="heads" id=headOne src="theresa.png">
@@ -68,7 +31,12 @@ document.getElementById('headOne').style.width=(window.innerWidth / 3.4) + 'px';
 document.getElementById('headTwo').style.width=(window.innerWidth / 3.4) + 'px';
 document.getElementById('headThree').style.width=(window.innerWidth / 3.4) + 'px';
 </script>
+<script>
+//Automatically set slider state from cache and call theme changer, set cache is missing
+//Function to change set browser cache for theme and call theme changer on toggle
+//Theme changer function to read in browser cache and change it, default to dark theme is cache is missing and set cache
 
+</script>
 <script>
 var today = new Date();
 var brexit_string = new Date(today.getFullYear(), 9, 30, 12); //Month, Day, Hour
