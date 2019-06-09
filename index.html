@@ -6,13 +6,15 @@
   <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
-<div>
-  <h1>Brexit Countdown</h1>
+<h1>Brexit Countdown</h1>
+<div style="line-height: 3px; font-size: 20px;">
   <p style="display: inline-block;">Today's date: </p> <p id="today_display" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
   <p style="display: inline-block;">Brexit date: </p> <p id="brexit_display" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
+  <div style="height: 20px"></div>
 
-  <p style="display: inline-block;">Hours left: </p> <p id="hours_left" style="display: inline-block;"> Loading...</p><br>
-  <p style="display: inline-block;">Days left: </p> <p id="days_left" style="display: inline-block;"> Loading...</p><br>
+  <p style="display: inline-block;">Weeks left: </p> <p id="weeks_left_html" style="display: inline-block;"> Loading...</p><br>
+  <p style="display: inline-block;">Days left: </p> <p id="days_left_html" style="display: inline-block;"> Loading...</p><br>
+  <p style="display: inline-block;">Hours left: </p> <p id="hours_left_html" style="display: inline-block;"> Loading...</p><br>
 </div>
 
 <div style="position: fixed; top: 5px; right: 5px;">
@@ -95,34 +97,55 @@ document.getElementById("today_display").innerHTML = today;
 document.getElementById("brexit_display").innerHTML = brexit_fixed;
 
 if(today == brexit_fixed) {
-  window.alert('Britain has now officially screwed itself over today...'); 
+  window.alert('Britain actually left the EU...'); 
 }
 
 var today = new Date();
 
 setTimeout(update, 1000);
 function update() {
-  update_hours()
-  update_days()
+  calculate_time()
+  display_time()
   setTimeout(update, 1000);
 }
-function update_hours() {
+
+var hours_left
+var days_left
+var weeks_left
+
+function calculate_time() {
   var today = new Date();
-  var hours_left
-  var days_left
-  var one_hour=1000*60*60;
-  var one_day=1000*60*60*24;
-  days_left = Math.ceil((brexit_string.getTime()-today.getTime())/(one_day));
-  hours_left = Math.ceil((brexit_string.getTime()-today.getTime())/(one_hour)-((days_left - 1) * 24));
-  document.getElementById("hours_left").innerHTML = hours_left;
+  var one_hour = 1000*60*60;
+  var one_day = 1000*60*60*24;
+  var one_week = 1000*60*60*24*7;
+  weeks_left = Math.floor((brexit_string.getTime()-today.getTime())/(one_week));
+  days_left = Math.ceil((brexit_string.getTime()-today.getTime())/(one_day)-((weeks_left) * 7));
+  hours_left = Math.ceil((brexit_string.getTime()-today.getTime())/(one_hour)-(((days_left - 1) + (weeks_left * 7)) * 24));
 }
-function update_days() {
-  var today = new Date();
-  var days_left
-  var one_day=1000*60*60*24;
-  days_left = Math.ceil((brexit_string.getTime()-today.getTime())/(one_day));
-  document.getElementById("days_left").innerHTML = days_left;
+
+function display_time() {
+  document.getElementById("hours_left_html").innerHTML = hours_left;
+  document.getElementById("days_left_html").innerHTML = days_left;
+  document.getElementById("weeks_left_html").innerHTML = weeks_left;
 }
+
+//function update_hours() {
+  //var today = new Date();
+  //var hours_left
+  //var days_left
+  //var one_hour=1000*60*60;
+  //var one_day=1000*60*60*24;
+  //days_left = Math.ceil((brexit_string.getTime()-today.getTime())/(one_day));
+  //hours_left = Math.ceil((brexit_string.getTime()-today.getTime())/(one_hour)-((days_left - 1) * 24));
+  //document.getElementById("hours_left").innerHTML = hours_left;
+//}
+//function update_days() {
+  //var today = new Date();
+  //var days_left
+  //var one_day=1000*60*60*24;
+  //days_left = Math.ceil((brexit_string.getTime()-today.getTime())/(one_day));
+  //document.getElementById("days_left").innerHTML = days_left;
+//}
 </script>
 <script>
 headOneReverse()
