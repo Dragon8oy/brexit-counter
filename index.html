@@ -26,6 +26,18 @@
 </div>
 
 <div class="headContainer">
+<div class="headQuote" id=headOneQuote>
+  <img src="quote.png">
+  <p class="headQuoteText" id=headOneQuoteText>One</p>
+</div>
+<div class="headQuote" id=headTwoQuote>
+  <img src="quote.png">
+  <p class="headQuoteText" id=headTwoQuoteText>Two</p>
+</div>
+<div class="headQuote" id=headThreeQuote>
+  <img src="quote.png">
+  <p class="headQuoteText" id=headThreeQuoteText>Three</p>
+</div>
   <img class="heads" id=headOne src="theresa.png">
   <img class="heads" id=headTwo src="boris.png">
   <img class="heads" id=headThree src="nigel.png">
@@ -146,9 +158,9 @@ function display_time() {
 }
 </script>
 <script>
-animateHead('headOne', 'reverse') //headOneReverse()
-animateHead('headTwo', 'reverse') //headTwoReverse()
-animateHead('headThree', 'reverse') //headThreeReverse()
+animateHead('headOne', 'reverse')
+animateHead('headTwo', 'reverse')
+animateHead('headThree', 'reverse')
 var headOneUp
 var headTwoUp
 var headThreeUp
@@ -164,6 +176,7 @@ function peak() {
     }
     if (headOneUp = '0') {
       if (runOneAgain == '0') {
+        showQuote('headOne')
         animateHead('headOne', 'normal')
       }
     }
@@ -175,6 +188,7 @@ function peak() {
     }
     if (headTwoUp = '0') {
       if (runTwoAgain == '0') {
+        showQuote('headTwo')
         animateHead('headTwo', 'normal')
       }
     }
@@ -186,12 +200,30 @@ function peak() {
     }
     if (headThreeUp = '0') {
       if (runThreeAgain == '0') {
+        showQuote('headThree')
         animateHead('headThree', 'normal')
       }
     }
     runThreeAgain = 0
   }
   setTimeout(peak, 3500);
+}
+
+function showQuote(targetHead) {
+  var file = new XMLHttpRequest();
+  file.open("GET", "https://raw.githubusercontent.com/Dragon8oy/brexit-counter/master/quotes.txt", true);
+  file.onreadystatechange = function() {
+    if (file.readyState === 4) {
+      if (file.status === 200) {
+        text = file.responseText;
+        quotes = text.split("| ")
+        document.getElementById(targetHead + 'Quote').classList.toggle('fade');
+        document.getElementById(targetHead + 'QuoteText').textContent = quotes[Math.floor(Math.random() * quotes.length)];
+        setTimeout(function () {document.getElementById(targetHead + 'Quote').classList.toggle('fade')}, 5000)
+      }
+    }
+  }
+  file.send(null);
 }
 
 function animateHead(targetHead, direction) {

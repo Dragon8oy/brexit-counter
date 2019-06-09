@@ -35,6 +35,26 @@ body {
   display: inline-block;
   width: 33%;
 }
+.headQuote {
+  position: relative;
+  display: inline-block; 
+  z-index: 10;
+  width: 33%;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 2s;
+}
+.headQuoteText {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+  color: black;
+}
+.headQuote.fade {
+  opacity: 1;
+}
 
 /* The switch - the box around the slider */
 .switch {
