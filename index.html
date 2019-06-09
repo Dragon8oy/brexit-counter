@@ -15,28 +15,42 @@ body {
 html {
   background-color: #38373a;
 }
+.headContainer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 .heads {
   display: inline-block;
   width: 33%;
 }
 </style>
 <div>
-  <h2>Brexit Countdown</h2>
+  <h1>Brexit Countdown</h1>
   <p style="display: inline-block;">Today's date: </p> <p id="today_display" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
   <p style="display: inline-block;">Brexit date: </p> <p id="brexit_display" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
 
   <p style="display: inline-block;">Hours left: </p> <p id="hours_left" style="display: inline-block;"> Loading...</p><br>
   <p style="display: inline-block;">Days left: </p> <p id="days_left" style="display: inline-block;"> Loading...</p><br>
+
+  <>
 </div>
-<div style="position: fixed; bottom: 0px; width: 100%;">
+<div class="headContainer">
   <img class="heads" id=headOne src="theresa.png">
   <img class="heads" id=headTwo src="boris.png">
   <img class="heads" id=headThree src="nigel.png">
 </div>
 
 <script>
-window.alert(window.innerWidth / 3.3)
 document.getElementById('headOne').style.width=(window.innerWidth / 3.4) + 'px';
+document.getElementById('headTwo').style.width=(window.innerWidth / 3.4) + 'px';
+document.getElementById('headThree').style.width=(window.innerWidth / 3.4) + 'px';
 </script>
 
 <script>
