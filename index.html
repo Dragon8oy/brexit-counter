@@ -46,7 +46,8 @@
 var pageSettings = {
   title: "Brexit Countdown",
   pageHeading: "Brexit Countdown",
-  eventTitle: "Brexit date:"
+  eventTitle: "Brexit date:",
+  quoteFileLocation: "https://raw.githubusercontent.com/Dragon8oy/brexit-counter/master/quotes.txt"
 };
 </script>
 <script> //Load page graphics
@@ -212,7 +213,7 @@ function selectSprite() {
 
 function showQuote(targetSprite) {
   var file = new XMLHttpRequest();
-  file.open("GET", "https://raw.githubusercontent.com/Dragon8oy/brexit-counter/master/quotes.txt", true);
+  file.open("GET", pageSettings.quoteFileLocation, true);
   file.onreadystatechange = function() {
     if (file.readyState === 4) {
       if (file.status === 200) {
