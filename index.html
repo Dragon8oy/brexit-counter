@@ -76,12 +76,10 @@ function toggleThemeSlider() {
 
 function toggleTheme() {
   var theme = readSavedTheme();
-  if (theme == 'dark') {
-    //Set theme to dark
+  if (theme == 'dark') { //Set theme to dark
     document.body.style.backgroundColor = '#38373a';
     document.body.style.color = 'white';
-  } else {
-    //Set theme to light
+  } else { //Set theme to light
     document.body.style.backgroundColor = 'white';
     document.body.style.color = 'black';
   }
@@ -162,14 +160,8 @@ function display_time() {
 animateSprite('spriteOne', 'reverse')
 animateSprite('spriteTwo', 'reverse')
 animateSprite('spriteThree', 'reverse')
-var spriteOneUp
-var spriteTwoUp
-var spriteThreeUp
-var runOneAgain
-var runTwoAgain
-var runThreeAgain
-setTimeout(peak, 1000);
-function peak() {
+setTimeout(selectSprite, 1000);
+function selectSprite() {
   var chooseSprite = Math.floor((Math.random() * 3) + 1);
   if (chooseSprite == '1') {
     if (spriteOneUp == '1') {
@@ -207,7 +199,7 @@ function peak() {
     }
     runThreeAgain = 0
   }
-  setTimeout(peak, 3500);
+  setTimeout(selectSprite, 3500);
 }
 
 function showQuote(targetSprite) {
@@ -229,11 +221,9 @@ function showQuote(targetSprite) {
 
 function animateSprite(targetSprite, direction) {
     document.getElementById(targetSprite).animate([
-    // keyframes
-    { transform: 'translateY(500px)' }, //From here (Negatives)
-    { transform: 'translateY(50px)' } //To here (- Means positive)
+    { transform: 'translateY(500px)' }, //Start (Pixels off screen)
+    { transform: 'translateY(50px)' } //End
   ], { 
-    // timing options
     duration: 2000,
     fill: 'forwards',
     direction: direction,
