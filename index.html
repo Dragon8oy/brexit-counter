@@ -11,9 +11,9 @@
   <p style="display: inline-block;" id="eventTitle"></p> <p id="eventDisplay" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
   <div style="height: 20px"></div>
 
-  <p style="display: inline-block;">Weeks left: </p> <p id="weeks_left_html" style="display: inline-block;"> Loading...</p><br>
-  <p style="display: inline-block;">Days left: </p> <p id="days_left_html" style="display: inline-block;"> Loading...</p><br>
-  <p style="display: inline-block;">Hours left: </p> <p id="hours_left_html" style="display: inline-block;"> Loading...</p><br>
+  <p style="display: inline-block;">Weeks left: </p> <p id="weeksLeftHtml" style="display: inline-block;"> Loading...</p><br>
+  <p style="display: inline-block;">Days left: </p> <p id="daysLeftHtml" style="display: inline-block;"> Loading...</p><br>
+  <p style="display: inline-block;">Hours left: </p> <p id="hoursLeftHtml" style="display: inline-block;"> Loading...</p><br>
 </div>
 
 <div style="position: fixed; top: 5px; right: 5px;">
@@ -155,9 +155,9 @@ function calculate_time() {
 }
 
 function display_time() {
-  document.getElementById("hours_left_html").innerHTML = hours_left;
-  document.getElementById("days_left_html").innerHTML = days_left;
-  document.getElementById("weeks_left_html").innerHTML = weeks_left;
+  document.getElementById("hoursLeftHtml").innerHTML = hours_left;
+  document.getElementById("daysLeftHtml").innerHTML = days_left;
+  document.getElementById("weeksLeftHtml").innerHTML = weeks_left;
 }
 </script>
 <script> //Animate the sprites
