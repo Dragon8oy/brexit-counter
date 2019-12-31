@@ -159,9 +159,9 @@ function display_time() {
 }
 </script>
 <script>
-animateHead('spriteOne', 'reverse')
-animateHead('spriteTwo', 'reverse')
-animateHead('spriteThree', 'reverse')
+animateSprite('spriteOne', 'reverse')
+animateSprite('spriteTwo', 'reverse')
+animateSprite('spriteThree', 'reverse')
 var spriteOneUp
 var spriteTwoUp
 var spriteThreeUp
@@ -170,39 +170,39 @@ var runTwoAgain
 var runThreeAgain
 setTimeout(peak, 1000);
 function peak() {
-  var chooseHead = Math.floor((Math.random() * 3) + 1);
-  if (chooseHead == '1') {
+  var chooseSprite = Math.floor((Math.random() * 3) + 1);
+  if (chooseSprite == '1') {
     if (spriteOneUp == '1') {
-      animateHead('spriteOne', 'reverse')
+      animateSprite('spriteOne', 'reverse')
     }
     if (spriteOneUp = '0') {
       if (runOneAgain == '0') {
         showQuote('spriteOne')
-        animateHead('spriteOne', 'normal')
+        animateSprite('spriteOne', 'normal')
       }
     }
     runOneAgain = 0
   }
-  if (chooseHead == '2') {
+  if (chooseSprite == '2') {
     if (spriteTwoUp == '1') {
-      animateHead('spriteTwo', 'reverse')
+      animateSprite('spriteTwo', 'reverse')
     }
     if (spriteTwoUp = '0') {
       if (runTwoAgain == '0') {
         showQuote('spriteTwo')
-        animateHead('spriteTwo', 'normal')
+        animateSprite('spriteTwo', 'normal')
       }
     }
     runTwoAgain = 0
   }
-  if (chooseHead == '3') {
+  if (chooseSprite == '3') {
     if (spriteThreeUp == '1') {
-      animateHead('spriteThree', 'reverse')
+      animateSprite('spriteThree', 'reverse')
     }
     if (spriteThreeUp = '0') {
       if (runThreeAgain == '0') {
         showQuote('spriteThree')
-        animateHead('spriteThree', 'normal')
+        animateSprite('spriteThree', 'normal')
       }
     }
     runThreeAgain = 0
@@ -210,7 +210,7 @@ function peak() {
   setTimeout(peak, 3500);
 }
 
-function showQuote(targetHead) {
+function showQuote(targetSprite) {
   var file = new XMLHttpRequest();
   file.open("GET", "https://raw.githubusercontent.com/Dragon8oy/brexit-counter/master/quotes.txt", true);
   file.onreadystatechange = function() {
@@ -218,17 +218,17 @@ function showQuote(targetHead) {
       if (file.status === 200) {
         text = file.responseText;
         quotes = text.split("| ")
-        document.getElementById(targetHead + 'Quote').classList.toggle('fade');
-        document.getElementById(targetHead + 'QuoteText').textContent = quotes[Math.floor(Math.random() * quotes.length)];
-        setTimeout(function () {document.getElementById(targetHead + 'Quote').classList.toggle('fade')}, 5000)
+        document.getElementById(targetSprite + 'Quote').classList.toggle('fade');
+        document.getElementById(targetSprite + 'QuoteText').textContent = quotes[Math.floor(Math.random() * quotes.length)];
+        setTimeout(function () {document.getElementById(targetSprite + 'Quote').classList.toggle('fade')}, 5000)
       }
     }
   }
   file.send(null);
 }
 
-function animateHead(targetHead, direction) {
-    document.getElementById(targetHead).animate([
+function animateSprite(targetSprite, direction) {
+    document.getElementById(targetSprite).animate([
     // keyframes
     { transform: 'translateY(500px)' }, //From here (Negatives)
     { transform: 'translateY(50px)' } //To here (- Means positive)
@@ -240,19 +240,19 @@ function animateHead(targetHead, direction) {
     iterations: 1
   });
   if (direction == 'normal') {
-    if (targetHead == 'spriteOne') {spriteOneUp = '1';};
-    if (targetHead == 'spriteTwo') {spriteTwoUp = '1';};
-    if (targetHead == 'spriteThree') {spriteThreeUp = '1';};
+    if (targetSprite == 'spriteOne') {spriteOneUp = '1';};
+    if (targetSprite == 'spriteTwo') {spriteTwoUp = '1';};
+    if (targetSprite == 'spriteThree') {spriteThreeUp = '1';};
   } else {
-    if (targetHead == 'spriteOne') {
+    if (targetSprite == 'spriteOne') {
       spriteOneUp = '0';
       runOneAgain = '1';
     };
-    if (targetHead == 'spriteTwo') {
+    if (targetSprite == 'spriteTwo') {
       spriteTwoUp = '0';
       runTwoAgain = '1';
     };
-    if (targetHead == 'spriteThree') {
+    if (targetSprite == 'spriteThree') {
       spriteThreeUp = '0';
       runThreeAgain = '1';
     };
