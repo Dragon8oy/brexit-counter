@@ -51,6 +51,7 @@ body {
   transform: translate(-50%, -50%);
   z-index: 11;
   color: black;
+  width: 75%;
 }
 .spriteQuote.fade {
   opacity: 1;
