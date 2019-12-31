@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <title>Brexit Countdown</title>
   <head>
     <link rel="shortcut icon" href="icon.png">
     <link rel="stylesheet" href="stylesheet.css">
   </head>
 <body>
-<h1>Brexit Countdown</h1>
+<h1 id="pageHeading"></h1>
 <div style="line-height: 3px; font-size: 20px;">
   <p style="display: inline-block;">Today's date: </p> <p id="today_display" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
   <p style="display: inline-block;">Brexit date: </p> <p id="brexit_display" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
@@ -43,7 +42,16 @@
   <img class="sprites" id=spriteThree src="spriteThree.png">
 </div>
 
-<script> //Load theme and set slider
+<script>
+var pageSettings = {
+  title: "Brexit Countdown",
+  pageHeading: "Brexit Countdown"
+};
+</script>
+<script> //Load page graphics
+document.title = pageSettings.title;
+document.getElementById('pageHeading').innerHTML = pageSettings.pageHeading;
+
 setSlider()
 toggleTheme()
 function readSavedTheme() {
