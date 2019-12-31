@@ -104,15 +104,9 @@ var eventDateFixed = '31/01/20'
 var dd = today.getDate();
 var mm = today.getMonth()+1;
 var yy = today.getYear()-100;
-if(dd<10) {
-    dd = '0'+dd
-} 
-if(mm<10) {
-    mm = '0'+mm
-}
-if(yy<10) {
-    yy = '0'+yy
-}
+if(dd<10) { dd = '0'+dd };
+if(mm<10) { mm = '0'+mm };
+if(yy<10) { yy = '0'+yy };
 today = dd + '/' + mm + '/' + yy;
 document.getElementById("todayDisplay").innerHTML = today;
 document.getElementById("eventDisplay").innerHTML = eventDateFixed;
