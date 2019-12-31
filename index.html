@@ -47,6 +47,7 @@ var pageSettings = {
   title: "Brexit Countdown",
   pageHeading: "Brexit Countdown",
   eventTitle: "Brexit date:",
+  eventReachedMessage: "Britain actually left the EU...",
   quoteFileLocation: "https://raw.githubusercontent.com/Dragon8oy/brexit-counter/master/quotes.txt"
 };
 </script>
@@ -131,7 +132,7 @@ function checkDate() {
       return
     }
     if (i == 1) {
-      window.alert('Britain actually left the EU...');
+      window.alert(pageSettings.eventReachedMessage);
     }
   }
 }
