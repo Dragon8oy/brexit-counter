@@ -25,22 +25,22 @@
   </label>
 </div>
 
-<div class="headContainer">
-<div class="headQuote" id=headOneQuote>
+<div class="spriteContainer">
+<div class="spriteQuote" id=spriteOneQuote>
   <img src="quote.png">
-  <p class="headQuoteText" id=headOneQuoteText>I'm Theresa</p>
+  <p class="spriteQuoteText" id=spriteOneQuoteText>I'm Theresa</p>
 </div>
-<div class="headQuote" id=headTwoQuote>
+<div class="spriteQuote" id=spriteTwoQuote>
   <img src="quote.png">
-  <p class="headQuoteText" id=headTwoQuoteText>I'm Boris</p>
+  <p class="spriteQuoteText" id=spriteTwoQuoteText>I'm Boris</p>
 </div>
-<div class="headQuote" id=headThreeQuote>
+<div class="spriteQuote" id=spriteThreeQuote>
   <img src="quote.png">
-  <p class="headQuoteText" id=headThreeQuoteText>I'm Nigel</p>
+  <p class="spriteQuoteText" id=spriteThreeQuoteText>I'm Nigel</p>
 </div>
-  <img class="heads" id=headOne src="theresa.png">
-  <img class="heads" id=headTwo src="boris.png">
-  <img class="heads" id=headThree src="nigel.png">
+  <img class="sprites" id=spriteOne src="theresa.png">
+  <img class="sprites" id=spriteTwo src="boris.png">
+  <img class="sprites" id=spriteThree src="nigel.png">
 </div>
 
 <script>
@@ -159,12 +159,12 @@ function display_time() {
 }
 </script>
 <script>
-animateHead('headOne', 'reverse')
-animateHead('headTwo', 'reverse')
-animateHead('headThree', 'reverse')
-var headOneUp
-var headTwoUp
-var headThreeUp
+animateHead('spriteOne', 'reverse')
+animateHead('spriteTwo', 'reverse')
+animateHead('spriteThree', 'reverse')
+var spriteOneUp
+var spriteTwoUp
+var spriteThreeUp
 var runOneAgain
 var runTwoAgain
 var runThreeAgain
@@ -172,37 +172,37 @@ setTimeout(peak, 1000);
 function peak() {
   var chooseHead = Math.floor((Math.random() * 3) + 1);
   if (chooseHead == '1') {
-    if (headOneUp == '1') {
-      animateHead('headOne', 'reverse')
+    if (spriteOneUp == '1') {
+      animateHead('spriteOne', 'reverse')
     }
-    if (headOneUp = '0') {
+    if (spriteOneUp = '0') {
       if (runOneAgain == '0') {
-        showQuote('headOne')
-        animateHead('headOne', 'normal')
+        showQuote('spriteOne')
+        animateHead('spriteOne', 'normal')
       }
     }
     runOneAgain = 0
   }
   if (chooseHead == '2') {
-    if (headTwoUp == '1') {
-      animateHead('headTwo', 'reverse')
+    if (spriteTwoUp == '1') {
+      animateHead('spriteTwo', 'reverse')
     }
-    if (headTwoUp = '0') {
+    if (spriteTwoUp = '0') {
       if (runTwoAgain == '0') {
-        showQuote('headTwo')
-        animateHead('headTwo', 'normal')
+        showQuote('spriteTwo')
+        animateHead('spriteTwo', 'normal')
       }
     }
     runTwoAgain = 0
   }
   if (chooseHead == '3') {
-    if (headThreeUp == '1') {
-      animateHead('headThree', 'reverse')
+    if (spriteThreeUp == '1') {
+      animateHead('spriteThree', 'reverse')
     }
-    if (headThreeUp = '0') {
+    if (spriteThreeUp = '0') {
       if (runThreeAgain == '0') {
-        showQuote('headThree')
-        animateHead('headThree', 'normal')
+        showQuote('spriteThree')
+        animateHead('spriteThree', 'normal')
       }
     }
     runThreeAgain = 0
@@ -240,20 +240,20 @@ function animateHead(targetHead, direction) {
     iterations: 1
   });
   if (direction == 'normal') {
-    if (targetHead == 'headOne') {headOneUp = '1';};
-    if (targetHead == 'headTwo') {headTwoUp = '1';};
-    if (targetHead == 'headThree') {headThreeUp = '1';};
+    if (targetHead == 'spriteOne') {spriteOneUp = '1';};
+    if (targetHead == 'spriteTwo') {spriteTwoUp = '1';};
+    if (targetHead == 'spriteThree') {spriteThreeUp = '1';};
   } else {
-    if (targetHead == 'headOne') {
-      headOneUp = '0';
+    if (targetHead == 'spriteOne') {
+      spriteOneUp = '0';
       runOneAgain = '1';
     };
-    if (targetHead == 'headTwo') {
-      headTwoUp = '0';
+    if (targetHead == 'spriteTwo') {
+      spriteTwoUp = '0';
       runTwoAgain = '1';
     };
-    if (targetHead == 'headThree') {
-      headThreeUp = '0';
+    if (targetHead == 'spriteThree') {
+      spriteThreeUp = '0';
       runThreeAgain = '1';
     };
   }

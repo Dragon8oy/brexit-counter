@@ -20,7 +20,7 @@ body {
 ::-webkit-selection { /*Webkit*/
     background-color: #4ace4f;
 }
-.headContainer {
+.spriteContainer {
   position: fixed;
   bottom: 0px;
   width: 100%;
@@ -31,11 +31,11 @@ body {
   -ms-user-select: none;
   user-select: none;
 }
-.heads {
+.sprites {
   display: inline-block;
   width: 33%;
 }
-.headQuote {
+.spriteQuote {
   position: relative;
   display: inline-block; 
   z-index: 10;
@@ -44,7 +44,7 @@ body {
   opacity: 0;
   transition: opacity 2s;
 }
-.headQuoteText {
+.spriteQuoteText {
   position: absolute;
   top: 35%;
   left: 50%;
@@ -52,7 +52,7 @@ body {
   z-index: 11;
   color: black;
 }
-.headQuote.fade {
+.spriteQuote.fade {
   opacity: 1;
 }
 
