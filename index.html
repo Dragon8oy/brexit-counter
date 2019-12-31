@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<title>Brexit Countdown</title>
-<head>
-  <link rel="shortcut icon" href="icon.png">
-  <link rel="stylesheet" href="stylesheet.css">
-</head>
+  <title>Brexit Countdown</title>
+  <head>
+    <link rel="shortcut icon" href="icon.png">
+    <link rel="stylesheet" href="stylesheet.css">
+  </head>
 <body>
 <h1>Brexit Countdown</h1>
 <div style="line-height: 3px; font-size: 20px;">
@@ -26,24 +26,24 @@
 </div>
 
 <div class="spriteContainer">
-<div class="spriteQuote" id=spriteOneQuote>
-  <img src="quote.png">
-  <p class="spriteQuoteText" id=spriteOneQuoteText>I'm Theresa</p>
-</div>
-<div class="spriteQuote" id=spriteTwoQuote>
-  <img src="quote.png">
-  <p class="spriteQuoteText" id=spriteTwoQuoteText>I'm Boris</p>
-</div>
-<div class="spriteQuote" id=spriteThreeQuote>
-  <img src="quote.png">
-  <p class="spriteQuoteText" id=spriteThreeQuoteText>I'm Nigel</p>
-</div>
+  <div class="spriteQuote" id=spriteOneQuote>
+    <img src="quote.png">
+    <p class="spriteQuoteText" id=spriteOneQuoteText>I'm Theresa</p>
+  </div>
+  <div class="spriteQuote" id=spriteTwoQuote>
+    <img src="quote.png">
+    <p class="spriteQuoteText" id=spriteTwoQuoteText>I'm Boris</p>
+  </div>
+  <div class="spriteQuote" id=spriteThreeQuote>
+    <img src="quote.png">
+    <p class="spriteQuoteText" id=spriteThreeQuoteText>I'm Nigel</p>
+  </div>
   <img class="sprites" id=spriteOne src="spriteOne.png">
   <img class="sprites" id=spriteTwo src="spriteTwo.png">
   <img class="sprites" id=spriteThree src="spriteThree.png">
 </div>
 
-<script>
+<script> //Load theme and set slider
 setSlider()
 toggleTheme()
 function readSavedTheme() {
@@ -84,9 +84,8 @@ function toggleTheme() {
     document.body.style.color = 'black';
   }
 }
-
 </script>
-<script>
+<script> //Calculate time left until date
 var today = new Date();
 var brexit_string = new Date(2020, 0, 30, 12); //Year, Month, Day, Hour
 //var brexit_string = new Date(today.getFullYear(), 1, 30, 12); //Month, Day, Hour
@@ -156,7 +155,7 @@ function display_time() {
   document.getElementById("weeks_left_html").innerHTML = weeks_left;
 }
 </script>
-<script>
+<script> //Animate the sprites
 animateSprite('spriteOne', 'reverse')
 animateSprite('spriteTwo', 'reverse')
 animateSprite('spriteThree', 'reverse')
