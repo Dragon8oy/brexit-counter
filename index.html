@@ -7,8 +7,8 @@
 <body>
 <h1 id="pageHeading"></h1>
 <div style="line-height: 3px; font-size: 20px;">
-  <p style="display: inline-block;">Today's date: </p> <p id="today_display" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
-  <p style="display: inline-block;">Brexit date: </p> <p id="brexit_display" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
+  <p style="display: inline-block;">Today's date: </p> <p id="todayDisplay" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
+  <p style="display: inline-block;" id="eventTitle"></p> <p id="eventDisplay" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
   <div style="height: 20px"></div>
 
   <p style="display: inline-block;">Weeks left: </p> <p id="weeks_left_html" style="display: inline-block;"> Loading...</p><br>
@@ -42,15 +42,17 @@
   <img class="sprites" id=spriteThree src="spriteThree.png">
 </div>
 
-<script>
+<script> //Page settings
 var pageSettings = {
   title: "Brexit Countdown",
-  pageHeading: "Brexit Countdown"
+  pageHeading: "Brexit Countdown",
+  eventTitle: "Brexit date:"
 };
 </script>
 <script> //Load page graphics
 document.title = pageSettings.title;
 document.getElementById('pageHeading').innerHTML = pageSettings.pageHeading;
+document.getElementById('eventTitle').innerHTML = pageSettings.eventTitle;
 
 setSlider()
 toggleTheme()
@@ -95,9 +97,8 @@ function toggleTheme() {
 </script>
 <script> //Calculate time left until date
 var today = new Date();
-var brexit_string = new Date(2020, 0, 30, 12); //Year, Month, Day, Hour
-//var brexit_string = new Date(today.getFullYear(), 1, 30, 12); //Month, Day, Hour
-var brexit_fixed = '31/01/20'
+var eventDateString = new Date(2020, 0, 30, 12); //Year, Month, Day, Hour
+var eventDateFixed = '31/01/20'
 var dd = today.getDate();
 var mm = today.getMonth()+1;
 var yy = today.getYear()-100;
@@ -111,21 +112,21 @@ if(yy<10) {
     yy = '0'+yy
 }
 today = dd + '/' + mm + '/' + yy;
-document.getElementById("today_display").innerHTML = today;
-document.getElementById("brexit_display").innerHTML = brexit_fixed;
+document.getElementById("todayDisplay").innerHTML = today;
+document.getElementById("eventDisplay").innerHTML = eventDateFixed;
 
-today_array = today.replace('/', '').replace('/', '').split("")
-brexit_array = brexit_fixed.replace('/', '').replace('/', '').split("")
+todayArray = today.replace('/', '').replace('/', '').split("")
+eventDateArray = eventDateFixed.replace('/', '').replace('/', '').split("")
 
 checkDate()
 function checkDate() {
   for (i = 2; i < 6; i++) {
-    if (today_array[i] < brexit_array[i]) {
+    if (todayArray[i] < eventDateArray[i]) {
       return
     }
   }
   for (i = 0; i < 2; i++) {
-    if (today_array[i] < brexit_array[i]) {
+    if (todayArray[i] < eventDateArray[i]) {
       return
     }
     if (i == 1) {
@@ -152,9 +153,9 @@ function calculate_time() {
   var one_hour = 1000*60*60;
   var one_day = 1000*60*60*24;
   var one_week = 1000*60*60*24*7;
-  weeks_left = Math.floor((brexit_string.getTime()-today.getTime())/(one_week));
-  days_left = Math.ceil((brexit_string.getTime()-today.getTime())/(one_day)-((weeks_left) * 7));
-  hours_left = Math.ceil((brexit_string.getTime()-today.getTime())/(one_hour)-(((days_left - 1) + (weeks_left * 7)) * 24));
+  weeks_left = Math.floor((eventDateString.getTime()-today.getTime())/(one_week));
+  days_left = Math.ceil((eventDateString.getTime()-today.getTime())/(one_day)-((weeks_left) * 7));
+  hours_left = Math.ceil((eventDateString.getTime()-today.getTime())/(one_hour)-(((days_left - 1) + (weeks_left * 7)) * 24));
 }
 
 function display_time() {
