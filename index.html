@@ -59,7 +59,7 @@ document.getElementById('eventTitle').innerHTML = pageSettings.eventTitle;
 setSlider()
 toggleTheme()
 function readSavedTheme() {
-  var theme = window.localStorage['theme'];
+  theme = window.localStorage['theme'];
   if (theme == undefined) {
     window.localStorage['theme'] = 'dark';
     theme = 'dark'
@@ -68,7 +68,7 @@ function readSavedTheme() {
 }
 
 function setSlider() {
-  var theme = readSavedTheme()
+  theme = readSavedTheme()
   if (theme == 'dark') {
     document.getElementById('slider').checked = true;
   } else {
@@ -77,7 +77,7 @@ function setSlider() {
 }
 
 function toggleThemeSlider() {
-  var theme = readSavedTheme()
+  theme = readSavedTheme()
   if (theme == 'dark') {
     window.localStorage['theme'] = 'light';
   } else {
@@ -87,7 +87,7 @@ function toggleThemeSlider() {
 }
 
 function toggleTheme() {
-  var theme = readSavedTheme();
+  theme = readSavedTheme();
   if (theme == 'dark') { //Set theme to dark
     document.body.style.backgroundColor = '#38373a';
     document.body.style.color = 'white';
@@ -98,15 +98,12 @@ function toggleTheme() {
 }
 </script>
 <script> //Calculate time left until date
-var today = new Date();
-var eventDateString = new Date(2020, 0, 30, 12); //Year, Month, Day, Hour
-var eventDateFixed = '31/01/20'
-var dd = today.getDate();
-var mm = today.getMonth()+1;
-var yy = today.getYear()-100;
-if(dd<10) { dd = '0'+dd };
-if(mm<10) { mm = '0'+mm };
-if(yy<10) { yy = '0'+yy };
+today = new Date();
+eventDateString = new Date(2020, 0, 30, 12); //Year, Month, Day, Hour
+eventDateFixed = '31/01/20'
+dd = today.getDate(); if(dd<10) { dd = '0'+dd };
+mm = today.getMonth()+1; if(mm<10) { mm = '0'+mm };
+yy = today.getYear()-100; if(yy<10) { yy = '0'+yy };
 today = dd + '/' + mm + '/' + yy;
 document.getElementById("todayDisplay").innerHTML = today;
 document.getElementById("eventDisplay").innerHTML = eventDateFixed;
@@ -131,33 +128,27 @@ function checkDate() {
   }
 }
 
-var today = new Date();
-
 setTimeout(update, 1000);
 function update() {
-  calculate_time()
-  display_time()
+  calculateTime()
+  displayTime()
   setTimeout(update, 1000);
 }
 
-var hours_left
-var days_left
-var weeks_left
-
-function calculate_time() {
-  var today = new Date();
-  var one_hour = 1000*60*60;
-  var one_day = 1000*60*60*24;
-  var one_week = 1000*60*60*24*7;
-  weeks_left = Math.floor((eventDateString.getTime()-today.getTime())/(one_week));
-  days_left = Math.ceil((eventDateString.getTime()-today.getTime())/(one_day)-((weeks_left) * 7));
-  hours_left = Math.ceil((eventDateString.getTime()-today.getTime())/(one_hour)-(((days_left - 1) + (weeks_left * 7)) * 24));
+oneHour = 1000*60*60;
+oneDay = 1000*60*60*24;
+oneWeek = 1000*60*60*24*7;
+function calculateTime() {
+  today = new Date();
+  weeksLeft = Math.floor((eventDateString.getTime()-today.getTime())/(oneWeek));
+  daysLeft = Math.ceil((eventDateString.getTime()-today.getTime())/(oneDay)-((weeksLeft) * 7));
+  hoursLeft = Math.ceil((eventDateString.getTime()-today.getTime())/(oneHour)-(((daysLeft - 1) + (weeksLeft * 7)) * 24));
 }
 
-function display_time() {
-  document.getElementById("hoursLeftHtml").innerHTML = hours_left;
-  document.getElementById("daysLeftHtml").innerHTML = days_left;
-  document.getElementById("weeksLeftHtml").innerHTML = weeks_left;
+function displayTime() {
+  document.getElementById("hoursLeftHtml").innerHTML = hoursLeft;
+  document.getElementById("daysLeftHtml").innerHTML = daysLeft;
+  document.getElementById("weeksLeftHtml").innerHTML = weeksLeft;
 }
 </script>
 <script> //Animate the sprites
@@ -166,36 +157,31 @@ animateSprite('spriteTwo', 'reverse')
 animateSprite('spriteThree', 'reverse')
 setTimeout(selectSprite, 1000);
 function selectSprite() {
-  var chooseSprite = Math.floor((Math.random() * 3) + 1);
+  chooseSprite = Math.floor((Math.random() * 3) + 1);
   if (chooseSprite == '1') {
     if (spriteOneUp == '1') {
       animateSprite('spriteOne', 'reverse')
-    }
-    if (spriteOneUp = '0') {
+    } else if (spriteOneUp = '0') {
       if (runOneAgain == '0') {
         showQuote('spriteOne')
         animateSprite('spriteOne', 'normal')
       }
     }
     runOneAgain = 0
-  }
-  if (chooseSprite == '2') {
+  } else if (chooseSprite == '2') {
     if (spriteTwoUp == '1') {
       animateSprite('spriteTwo', 'reverse')
-    }
-    if (spriteTwoUp = '0') {
+    } else if (spriteTwoUp = '0') {
       if (runTwoAgain == '0') {
         showQuote('spriteTwo')
         animateSprite('spriteTwo', 'normal')
       }
     }
     runTwoAgain = 0
-  }
-  if (chooseSprite == '3') {
+  } else if (chooseSprite == '3') {
     if (spriteThreeUp == '1') {
       animateSprite('spriteThree', 'reverse')
-    }
-    if (spriteThreeUp = '0') {
+    } else if (spriteThreeUp = '0') {
       if (runThreeAgain == '0') {
         showQuote('spriteThree')
         animateSprite('spriteThree', 'normal')
