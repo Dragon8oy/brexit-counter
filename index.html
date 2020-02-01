@@ -99,7 +99,7 @@ function toggleTheme() {
 </script>
 <script> //Calculate time from date
 today = new Date();
-eventDateString = new Date(2020, 0, 30, 12); //Year, Month, Day, Hour
+eventDateString = new Date(2020, 0, 30, 23); //Year, Month, Day, Hour
 eventDateFixed = '31/01/20'
 dd = today.getDate(); if(dd<10) { dd = '0'+dd };
 mm = today.getMonth()+1; if(mm<10) { mm = '0'+mm };
@@ -107,9 +107,6 @@ yy = today.getYear()-100; if(yy<10) { yy = '0'+yy };
 today = dd + '/' + mm + '/' + yy;
 document.getElementById("todayDisplay").innerHTML = today;
 document.getElementById("eventDisplay").innerHTML = eventDateFixed;
-
-todayArray = today.replace('/', '').replace('/', '').split("")
-eventDateArray = eventDateFixed.replace('/', '').replace('/', '').split("")
 
 setTimeout(update, 1000);
 function update() {
