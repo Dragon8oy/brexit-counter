@@ -111,23 +111,6 @@ document.getElementById("eventDisplay").innerHTML = eventDateFixed;
 todayArray = today.replace('/', '').replace('/', '').split("")
 eventDateArray = eventDateFixed.replace('/', '').replace('/', '').split("")
 
-checkDate()
-function checkDate() {
-  for (i = 2; i < 6; i++) {
-    if (todayArray[i] < eventDateArray[i]) {
-      return
-    }
-  }
-  for (i = 0; i < 2; i++) {
-    if (todayArray[i] < eventDateArray[i]) {
-      return
-    }
-    if (i == 1) {
-      window.alert(pageSettings.eventReachedMessage);
-    }
-  }
-}
-
 setTimeout(update, 1000);
 function update() {
   calculateTime()
