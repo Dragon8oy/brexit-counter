@@ -12,9 +12,9 @@
   <p style="display: inline-block;" id="eventTitle"></p> <p id="eventDisplay" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
   <div style="height: 20px"></div>
 
-  <p style="display: inline-block;">Weeks ago: </p> <p id="weeksLeftHtml" style="display: inline-block;"> Loading...</p><br>
-  <p style="display: inline-block;">Days ago: </p> <p id="daysLeftHtml" style="display: inline-block;"> Loading...</p><br>
-  <p style="display: inline-block;">Hours ago: </p> <p id="hoursLeftHtml" style="display: inline-block;"> Loading...</p><br>
+  <p style="display: inline-block;">Weeks ago: </p> <p id="weeksAgoHtml" style="display: inline-block;"> Loading...</p><br>
+  <p style="display: inline-block;">Days ago: </p> <p id="daysAgoHtml" style="display: inline-block;"> Loading...</p><br>
+  <p style="display: inline-block;">Hours ago: </p> <p id="hoursAgoHtml" style="display: inline-block;"> Loading...</p><br>
 </div>
 
 <div style="position: fixed; top: 5px; right: 5px;">
@@ -97,7 +97,7 @@ function toggleTheme() {
   }
 }
 </script>
-<script> //Calculate time left until date
+<script> //Calculate time from date
 today = new Date();
 eventDateString = new Date(2020, 0, 30, 12); //Year, Month, Day, Hour
 eventDateFixed = '31/01/20'
@@ -140,15 +140,15 @@ oneDay = 1000*60*60*24;
 oneWeek = 1000*60*60*24*7;
 function calculateTime() {
   today = new Date();
-  weeksLeft = Math.floor((eventDateString.getTime()-today.getTime())/(oneWeek));
-  daysLeft = Math.ceil((eventDateString.getTime()-today.getTime())/(oneDay)-((weeksLeft) * 7));
-  hoursLeft = Math.ceil((eventDateString.getTime()-today.getTime())/(oneHour)-(((daysLeft - 1) + (weeksLeft * 7)) * 24));
+  weeksAgo = Math.floor((eventDateString.getTime()-today.getTime())/(oneWeek));
+  daysAgo = Math.ceil((eventDateString.getTime()-today.getTime())/(oneDay)-((weeksAgo) * 7));
+  hoursAgo = Math.ceil((eventDateString.getTime()-today.getTime())/(oneHour)-(((daysAgo - 1) + (weeksAgo * 7)) * 24));
 }
 
 function displayTime() {
-  document.getElementById("hoursLeftHtml").innerHTML = hoursLeft;
-  document.getElementById("daysLeftHtml").innerHTML = daysLeft;
-  document.getElementById("weeksLeftHtml").innerHTML = weeksLeft;
+  document.getElementById("hoursAgoHtml").innerHTML = hoursAgo;
+  document.getElementById("daysAgoHtml").innerHTML = daysAgo;
+  document.getElementById("weeksAgoHtml").innerHTML = weeksAgo;
 }
 </script>
 <script> //Animate the sprites
