@@ -99,7 +99,7 @@ function toggleTheme() {
 </script>
 <script> //Calculate time from date
 today = new Date();
-eventDateString = new Date(2020, 0, 30, 23); //Year, Month, Day, Hour
+eventDateString = new Date("January 31, 2020 23:00:00");
 eventDateFixed = '31/01/20'
 dd = today.getDate(); if(dd<10) { dd = '0'+dd };
 mm = today.getMonth()+1; if(mm<10) { mm = '0'+mm };
@@ -118,11 +118,14 @@ function update() {
 oneHour = 1000*60*60;
 oneDay = 1000*60*60*24;
 oneWeek = 1000*60*60*24*7;
+
 function calculateTime() {
   today = new Date();
-  weeksAgo = Math.floor((eventDateString.getTime()-today.getTime())/(oneWeek));
-  daysAgo = Math.ceil((eventDateString.getTime()-today.getTime())/(oneDay)-((weeksAgo) * 7));
-  hoursAgo = Math.ceil((eventDateString.getTime()-today.getTime())/(oneHour)-(((daysAgo - 1) + (weeksAgo * 7)) * 24));
+  timeDiff = today.getTime()-eventDateString.getTime();
+  hoursAgo = Math.floor(timeDiff / oneHour);
+  daysAgo =  Math.floor((timeDiff / oneDay) - (hoursAgo / 24));
+  weeksAgo = Math.floor((timeDiff / oneWeek) - (daysAgo / 7));
+  hoursAgo = Math.ceil(timeDiff / oneHour);
 }
 
 function displayTime() {
