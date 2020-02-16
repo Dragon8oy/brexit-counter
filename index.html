@@ -122,10 +122,25 @@ oneWeek = 1000*60*60*24*7;
 function calculateTime() {
   today = new Date();
   timeDiff = today.getTime()-eventDateString.getTime();
+  //Calculate hours
+  hoursAgo = Math.floor(timeDiff / oneHour);
+  //Calculate days
+  daysAgo = Math.floor(hoursAgo / 24);
+  //Calculate weeks
+  weeksAgo = Math.floor(daysAgo / 7);
+  //Refine measures
+  daysAgo = Math.floor(daysAgo - (weeksAgo * 7));
+  hoursAgo = Math.floor((timeDiff / oneHour) - ((weeksAgo * 168) + (daysAgo * 24)));
+}
+
+function calculateTime2() {
+  today = new Date();
+  timeDiff = today.getTime()-eventDateString.getTime();
   hoursAgo = Math.floor(timeDiff / oneHour);
   daysAgo =  Math.floor((timeDiff / oneDay) - (hoursAgo / 24));
   weeksAgo = Math.floor((timeDiff / oneWeek) - (daysAgo / 7));
-  hoursAgo = Math.ceil(timeDiff / oneHour);
+  hoursAgo = Math.ceil((timeDiff / oneHour) - (weeksAgo * 168));
+  daysAgo =  Math.floor((timeDiff / oneDay) - (hoursAgo / 24));
 }
 
 function displayTime() {
