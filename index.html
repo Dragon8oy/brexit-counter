@@ -48,7 +48,8 @@ var pageSettings = {
   title: "Post-Brexit Counter",
   pageHeading: "Post-Brexit Counter",
   eventTitle: "Brexit's date:",
-  quoteFileLocation: "https://raw.githubusercontent.com/Dragon8oy/brexit-counter/master/quotes.txt"
+  quoteFileLocation: "https://raw.githubusercontent.com/Dragon8oy/brexit-counter/master/quotes.txt",
+  quoteTimer: 10000
 };
 </script>
 <script> //Load page graphics
@@ -186,7 +187,7 @@ function showQuote(targetSprite) {
         quotes = text.split("| ")
         document.getElementById(targetSprite + 'Quote').classList.toggle('fade');
         document.getElementById(targetSprite + 'QuoteText').textContent = quotes[Math.floor(Math.random() * quotes.length)];
-        setTimeout(function () {document.getElementById(targetSprite + 'Quote').classList.toggle('fade')}, 5000)
+        setTimeout(function () {document.getElementById(targetSprite + 'Quote').classList.toggle('fade')}, pageSettings.quoteTimer)
       }
     }
   }
