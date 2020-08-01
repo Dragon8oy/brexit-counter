@@ -43,17 +43,8 @@
   <img class="sprites" id=spriteThree src="sprites/spriteThree.png">
 </div>
 
-<script> //Page settings
-const pageSettings = {
-  title: "Post-Brexit Counter",
-  pageHeading: "Post-Brexit Counter",
-  bannerText: "Britain actually left the EU...",
-  eventTitle: "Brexit's date:",
-  quoteFileLocation: "https://raw.githubusercontent.com/Dragon8oy/brexit-counter/master/quotes.txt",
-  quoteTimer: 10000,
-  eventDateString: new Date("January 31, 2020 23:00:00")
-};
-</script>
+<script src=settings.js>//Page settings</script>
+<script src=dateCalc.js>//Date calculations</script>
 <script> //Load page graphics
 document.title = pageSettings.title;
 document.getElementById('pageBanner').innerHTML = pageSettings.bannerText;
@@ -101,7 +92,6 @@ function toggleTheme() {
   }
 }
 </script>
-<script src=dateCalc.js></script>
 <script> //Calculate time from / to date
 today = new Date();
 document.getElementById("eventDisplay").innerHTML = pageSettings.eventDateString.getDate() + '/' + pageSettings.eventDateString.getMonth() + 1 + '/' + pageSettings.eventDateString.getFullYear();
