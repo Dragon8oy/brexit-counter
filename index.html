@@ -6,7 +6,7 @@
   </head>
 <body>
 <h1 id="pageHeading"></h1>
-<div style="position: absolute; width: 20%; left: 40%; right: 40%; top: 0%"><h2>Britain actually left the EU...</h2></div>
+<div style="position: absolute; width: 20%; left: 40%; right: 40%; top: 0%"><h2 id="pageBanner"></h2></div>
 <div style="line-height: 3px; font-size: 20px;">
   <p style="display: inline-block;">Today's date: </p> <p id="todayDisplay" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
   <p style="display: inline-block;" id="eventTitle"></p> <p id="eventDisplay" style="display: inline-block;" > Sorry, there was an error loading the webpage.</p><br>
@@ -44,16 +44,19 @@
 </div>
 
 <script> //Page settings
-var pageSettings = {
+const pageSettings = {
   title: "Post-Brexit Counter",
   pageHeading: "Post-Brexit Counter",
+  bannerText: "Britain actually left the EU...",
   eventTitle: "Brexit's date:",
   quoteFileLocation: "https://raw.githubusercontent.com/Dragon8oy/brexit-counter/master/quotes.txt",
-  quoteTimer: 10000
+  quoteTimer: 10000,
+  eventDateString: new Date("January 31, 2020 23:00:00")
 };
 </script>
 <script> //Load page graphics
 document.title = pageSettings.title;
+document.getElementById('pageBanner').innerHTML = pageSettings.bannerText;
 document.getElementById('pageHeading').innerHTML = pageSettings.pageHeading;
 document.getElementById('eventTitle').innerHTML = pageSettings.eventTitle;
 
@@ -98,42 +101,18 @@ function toggleTheme() {
   }
 }
 </script>
-<script> //Calculate time from date
+<script src=dateCalc.js></script>
+<script> //Calculate time from / to date
 today = new Date();
-eventDateString = new Date("January 31, 2020 23:00:00");
-eventDateFixed = '31/01/20'
-dd = today.getDate(); if(dd<10) { dd = '0'+dd };
-mm = today.getMonth()+1; if(mm<10) { mm = '0'+mm };
-yy = today.getYear()-100; if(yy<10) { yy = '0'+yy };
-today = dd + '/' + mm + '/' + yy;
-document.getElementById("todayDisplay").innerHTML = today;
-document.getElementById("eventDisplay").innerHTML = eventDateFixed;
+document.getElementById("eventDisplay").innerHTML = pageSettings.eventDateString.getDate() + '/' + pageSettings.eventDateString.getMonth() + 1 + '/' + pageSettings.eventDateString.getFullYear();
+document.getElementById("todayDisplay").innerHTML = today.getDate() + '/' + today.getMonth() + '/' + today.getFullYear();
 
 setTimeout(update, 1000);
 function update() {
+  document.getElementById("todayDisplay").innerHTML = today.getDate() + '/' + today.getMonth() + '/' + today.getFullYear();
   calculateTime()
   displayTime()
   setTimeout(update, 1000);
-}
-
-oneHour = 1000*60*60;
-oneDay = 1000*60*60*24;
-oneWeek = 1000*60*60*24*7;
-
-function calculateTime() {
-  today = new Date();
-  timeDiff = today.getTime()-eventDateString.getTime();
-  hoursAgo = Math.floor(timeDiff / oneHour);
-  daysAgo = Math.floor(hoursAgo / 24);
-  weeksAgo = Math.floor(daysAgo / 7);
-  daysAgo = Math.floor(daysAgo - (weeksAgo * 7));
-  hoursAgo = Math.floor((timeDiff / oneHour) - ((weeksAgo * 168) + (daysAgo * 24)));
-}
-
-function displayTime() {
-  document.getElementById("hoursAgoHtml").innerHTML = hoursAgo;
-  document.getElementById("daysAgoHtml").innerHTML = daysAgo;
-  document.getElementById("weeksAgoHtml").innerHTML = weeksAgo;
 }
 </script>
 <script> //Animate the sprites
