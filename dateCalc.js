@@ -1,3 +1,15 @@
+today = new Date();
+document.getElementById("eventDisplay").innerHTML = pageSettings.eventDateString.getDate() + '/' + pageSettings.eventDateString.getMonth() + 1 + '/' + pageSettings.eventDateString.getFullYear();
+document.getElementById("todayDisplay").innerHTML = today.getDate() + '/' + today.getMonth() + '/' + today.getFullYear();
+
+setTimeout(update, 1000);
+function update() {
+  document.getElementById("todayDisplay").innerHTML = today.getDate() + '/' + today.getMonth() + '/' + today.getFullYear();
+  calculateTime()
+  displayTime()
+  setTimeout(update, 1000);
+}
+
 oneHour = 1000*60*60;
 oneDay = 1000*60*60*24;
 oneWeek = 1000*60*60*24*7;

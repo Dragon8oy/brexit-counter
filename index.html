@@ -48,19 +48,6 @@
 <script src=dateCalc.js>//Date calculation logic</script>
 <script src=animateSprites.js>//Run animations for the sprites</script>
 <script src=quotes.js> //Fetch and display quotes</script>
-<script> //Calculate time from / to date
-today = new Date();
-document.getElementById("eventDisplay").innerHTML = pageSettings.eventDateString.getDate() + '/' + pageSettings.eventDateString.getMonth() + 1 + '/' + pageSettings.eventDateString.getFullYear();
-document.getElementById("todayDisplay").innerHTML = today.getDate() + '/' + today.getMonth() + '/' + today.getFullYear();
-
-setTimeout(update, 1000);
-function update() {
-  document.getElementById("todayDisplay").innerHTML = today.getDate() + '/' + today.getMonth() + '/' + today.getFullYear();
-  calculateTime()
-  displayTime()
-  setTimeout(update, 1000);
-}
-</script>
 </body>
 </html>
 
