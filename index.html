@@ -109,6 +109,7 @@ function update() {
 animateSprite('spriteOne', 'reverse')
 animateSprite('spriteTwo', 'reverse')
 animateSprite('spriteThree', 'reverse')
+getQuoteList(false, '')
 setTimeout(selectSprite, 1000);
 function selectSprite() {
   chooseSprite = Math.floor((Math.random() * 3) + 1);
@@ -117,7 +118,7 @@ function selectSprite() {
       animateSprite('spriteOne', 'reverse')
     } else if (spriteOneUp = '0') {
       if (runOneAgain == '0') {
-        showQuote('spriteOne')
+        showQuote('spriteOne', quotes)
         animateSprite('spriteOne', 'normal')
       }
     }
@@ -127,7 +128,7 @@ function selectSprite() {
       animateSprite('spriteTwo', 'reverse')
     } else if (spriteTwoUp = '0') {
       if (runTwoAgain == '0') {
-        showQuote('spriteTwo')
+        showQuote('spriteTwo', quotes)
         animateSprite('spriteTwo', 'normal')
       }
     }
@@ -137,7 +138,7 @@ function selectSprite() {
       animateSprite('spriteThree', 'reverse')
     } else if (spriteThreeUp = '0') {
       if (runThreeAgain == '0') {
-        showQuote('spriteThree')
+        showQuote('spriteThree', quotes)
         animateSprite('spriteThree', 'normal')
       }
     }
@@ -146,21 +147,35 @@ function selectSprite() {
   setTimeout(selectSprite, 3500);
 }
 
-function showQuote(targetSprite) {
+function getQuoteList(fallback, quoteFileUrl) {
+  if (fallback == false) {
+    quoteFileUrl = window.location.href.replace("index.html", "") + 'assets/quotes.txt'
+  }
   var file = new XMLHttpRequest();
-  file.open("GET", pageSettings.quoteFileLocation, true);
+  file.open("GET", quoteFileUrl, true);
   file.onreadystatechange = function() {
     if (file.readyState === 4) {
       if (file.status === 200) {
         text = file.responseText;
         quotes = text.split("| ")
-        document.getElementById(targetSprite + 'Quote').classList.toggle('fade');
-        document.getElementById(targetSprite + 'QuoteText').textContent = quotes[Math.floor(Math.random() * quotes.length)];
-        setTimeout(function () {document.getElementById(targetSprite + 'Quote').classList.toggle('fade')}, pageSettings.quoteTimer)
+        return quotes
+      } else {
+        if (fallback == false) {
+          console.log("Failed to get quote file from current URL, trying fallback")
+          getQuoteList(true, pageSettings.fallbackQuoteFile);
+        } else {
+          console.log("Fallback URL failed")
+        }
       }
     }
   }
   file.send(null);
+}
+
+function showQuote(targetSprite, quotes) {
+  document.getElementById(targetSprite + 'Quote').classList.toggle('fade');
+  document.getElementById(targetSprite + 'QuoteText').textContent = quotes[Math.floor(Math.random() * quotes.length)];
+  setTimeout(function () {document.getElementById(targetSprite + 'Quote').classList.toggle('fade')}, pageSettings.quoteTimer);
 }
 
 function animateSprite(targetSprite, direction) {
