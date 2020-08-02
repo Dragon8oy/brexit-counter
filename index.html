@@ -44,54 +44,10 @@
 </div>
 
 <script src=settings.js>//Page settings</script>
-<script src=dateCalc.js>//Date calculations</script>
-<script> //Load page graphics
-document.title = pageSettings.title;
-document.getElementById('pageBanner').innerHTML = pageSettings.bannerText;
-document.getElementById('pageHeading').innerHTML = pageSettings.pageHeading;
-document.getElementById('eventTitle').innerHTML = pageSettings.eventTitle;
-
-setSlider()
-toggleTheme()
-function readSavedTheme() {
-  theme = window.localStorage['theme'];
-  if (theme == undefined) {
-    window.localStorage['theme'] = 'dark';
-    theme = 'dark'
-  }
-  return theme
-}
-
-function setSlider() {
-  theme = readSavedTheme()
-  if (theme == 'dark') {
-    document.getElementById('slider').checked = true;
-  } else {
-    document.getElementById('slider').checked = false;
-  }
-}
-
-function toggleThemeSlider() {
-  theme = readSavedTheme()
-  if (theme == 'dark') {
-    window.localStorage['theme'] = 'light';
-  } else {
-    window.localStorage['theme'] = 'dark';
-  }
-  toggleTheme()
-}
-
-function toggleTheme() {
-  theme = readSavedTheme();
-  if (theme == 'dark') { //Set theme to dark
-    document.body.style.backgroundColor = '#38373a';
-    document.body.style.color = 'white';
-  } else { //Set theme to light
-    document.body.style.backgroundColor = 'white';
-    document.body.style.color = 'black';
-  }
-}
-</script>
+<script src=loadTheme.js>//Load page graphics</script>
+<script src=dateCalc.js>//Date calculation logic</script>
+<script src=animateSprites.js>//Run animations for the sprites</script>
+<script src=quotes.js> //Fetch and display quotes</script>
 <script> //Calculate time from / to date
 today = new Date();
 document.getElementById("eventDisplay").innerHTML = pageSettings.eventDateString.getDate() + '/' + pageSettings.eventDateString.getMonth() + 1 + '/' + pageSettings.eventDateString.getFullYear();
@@ -103,109 +59,6 @@ function update() {
   calculateTime()
   displayTime()
   setTimeout(update, 1000);
-}
-</script>
-<script> //Animate the sprites
-animateSprite('spriteOne', 'reverse')
-animateSprite('spriteTwo', 'reverse')
-animateSprite('spriteThree', 'reverse')
-getQuoteList(false, '')
-setTimeout(selectSprite, 1000);
-function selectSprite() {
-  chooseSprite = Math.floor((Math.random() * 3) + 1);
-  if (chooseSprite == '1') {
-    if (spriteOneUp == '1') {
-      animateSprite('spriteOne', 'reverse')
-    } else if (spriteOneUp = '0') {
-      if (runOneAgain == '0') {
-        showQuote('spriteOne', quotes)
-        animateSprite('spriteOne', 'normal')
-      }
-    }
-    runOneAgain = 0
-  } else if (chooseSprite == '2') {
-    if (spriteTwoUp == '1') {
-      animateSprite('spriteTwo', 'reverse')
-    } else if (spriteTwoUp = '0') {
-      if (runTwoAgain == '0') {
-        showQuote('spriteTwo', quotes)
-        animateSprite('spriteTwo', 'normal')
-      }
-    }
-    runTwoAgain = 0
-  } else if (chooseSprite == '3') {
-    if (spriteThreeUp == '1') {
-      animateSprite('spriteThree', 'reverse')
-    } else if (spriteThreeUp = '0') {
-      if (runThreeAgain == '0') {
-        showQuote('spriteThree', quotes)
-        animateSprite('spriteThree', 'normal')
-      }
-    }
-    runThreeAgain = 0
-  }
-  setTimeout(selectSprite, 3500);
-}
-
-function getQuoteList(fallback, quoteFileUrl) {
-  if (fallback == false) {
-    quoteFileUrl = window.location.href.replace("index.html", "") + 'assets/quotes.txt'
-  }
-  var file = new XMLHttpRequest();
-  file.open("GET", quoteFileUrl, true);
-  file.onreadystatechange = function() {
-    if (file.readyState === 4) {
-      if (file.status === 200) {
-        text = file.responseText;
-        quotes = text.split("\n")
-        return quotes
-      } else {
-        if (fallback == false) {
-          console.log("Failed to get quote file from current URL, trying fallback")
-          getQuoteList(true, pageSettings.fallbackQuoteFile);
-        } else {
-          console.log("Fallback URL failed")
-        }
-      }
-    }
-  }
-  file.send(null);
-}
-
-function showQuote(targetSprite, quotes) {
-  document.getElementById(targetSprite + 'Quote').classList.toggle('fade');
-  document.getElementById(targetSprite + 'QuoteText').textContent = quotes[Math.floor(Math.random() * quotes.length)];
-  setTimeout(function () {document.getElementById(targetSprite + 'Quote').classList.toggle('fade')}, pageSettings.quoteTimer);
-}
-
-function animateSprite(targetSprite, direction) {
-    document.getElementById(targetSprite).animate([
-    { transform: 'translateY(500px)' }, //Start (Pixels off screen)
-    { transform: 'translateY(50px)' } //End
-  ], { 
-    duration: 2000,
-    fill: 'forwards',
-    direction: direction,
-    iterations: 1
-  });
-  if (direction == 'normal') {
-    if (targetSprite == 'spriteOne') {spriteOneUp = '1';};
-    if (targetSprite == 'spriteTwo') {spriteTwoUp = '1';};
-    if (targetSprite == 'spriteThree') {spriteThreeUp = '1';};
-  } else {
-    if (targetSprite == 'spriteOne') {
-      spriteOneUp = '0';
-      runOneAgain = '1';
-    };
-    if (targetSprite == 'spriteTwo') {
-      spriteTwoUp = '0';
-      runTwoAgain = '1';
-    };
-    if (targetSprite == 'spriteThree') {
-      spriteThreeUp = '0';
-      runThreeAgain = '1';
-    };
-  }
 }
 </script>
 </body>
