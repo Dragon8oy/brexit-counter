@@ -46,9 +46,9 @@ function animateSprite(targetSprite, direction) {
     iterations: 1
   });
   if (direction == 'normal') {
-    if (targetSprite == 'spriteOne') {spriteOne.active = '1'; setTimeout( function () {animateSprite('spriteOne', 'reverse')}, pageSettings.quoteTimer)};
-    if (targetSprite == 'spriteTwo') {spriteTwo.active = '1'; setTimeout( function () {animateSprite('spriteTwo', 'reverse')}, pageSettings.quoteTimer)};
-    if (targetSprite == 'spriteThree') {spriteThree.active = '1'; setTimeout( function () {animateSprite('spriteThree', 'reverse')}, pageSettings.quoteTimer)};
+    if (targetSprite == 'spriteOne') {spriteOne.active = '1'; setTimeout( function () {animateSprite(targetSprite, 'reverse')}, pageSettings.quoteTimer)};
+    if (targetSprite == 'spriteTwo') {spriteTwo.active = '1'; setTimeout( function () {animateSprite(targetSprite, 'reverse')}, pageSettings.quoteTimer)};
+    if (targetSprite == 'spriteThree') {spriteThree.active = '1'; setTimeout( function () {animateSprite(targetSprite, 'reverse')}, pageSettings.quoteTimer)};
   } else {
     if (targetSprite == 'spriteOne') {spriteOne.active = '0'};
     if (targetSprite == 'spriteTwo') {spriteTwo.active = '0'};
