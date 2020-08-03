@@ -1,5 +1,6 @@
 document.title = pageSettings.title;
 document.getElementById('pageBanner').innerHTML = pageSettings.bannerText;
+document.getElementById('subPageBanner').innerHTML = pageSettings.subBannerText;
 document.getElementById('pageHeading').innerHTML = pageSettings.pageHeading;
 document.getElementById('eventTitle').innerHTML = pageSettings.eventTitle;
 
