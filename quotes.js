@@ -9,6 +9,7 @@ function getQuoteList(fallback, quoteFileUrl) {
       if (file.status === 200) {
         text = file.responseText;
         quotes = text.split("\n")
+        quotes.pop()
         return quotes
       } else {
         if (fallback == false) {
