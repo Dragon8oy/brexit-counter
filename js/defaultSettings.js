@@ -7,5 +7,13 @@ const pageSettings = {
   fallbackQuoteFile: "https://raw.githubusercontent.com/Dragon8oy/brexit-counter/master/assets/quotes.txt",
   quoteTimer: 10000,
   spriteDuration: 2000,
-  eventDateString: new Date("January 31, 2020 23:00:00")
+  eventDateString: new Date("January 31, 2020 23:00:00"),
+  darkTheme: { //Colours for dark theme
+    backgroundColour: "#38373a",
+    textColour: "white"
+  },
+  lightTheme: { //Colours for light theme
+    backgroundColour: "white",
+    textColour: "black"
+  }
 };
