@@ -1,10 +1,10 @@
 today = new Date();
 document.getElementById("eventDisplay").innerHTML = pageSettings.eventDateString.getDate() + '/' + pageSettings.eventDateString.getMonth() + 1 + '/' + pageSettings.eventDateString.getFullYear();
-document.getElementById("todayDisplay").innerHTML = today.getDate() + '/' + today.getMonth() + '/' + today.getFullYear();
 
+update()
 setTimeout(update, 1000);
 function update() {
-  document.getElementById("todayDisplay").innerHTML = today.getDate() + '/' + today.getMonth() + '/' + today.getFullYear();
+  document.getElementById("todayDisplay").innerHTML = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
   calculateTime()
   displayTime()
   setTimeout(update, 1000);
