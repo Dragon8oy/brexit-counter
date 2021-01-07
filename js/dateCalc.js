@@ -1,6 +1,10 @@
 today = new Date();
 document.getElementById("eventDisplay").innerHTML = pageSettings.eventDateString.getDate() + '/' + pageSettings.eventDateString.getMonth() + 1 + '/' + pageSettings.eventDateString.getFullYear();
 
+const oneHour = 1000*60*60;
+const oneDay = 1000*60*60*24;
+const oneWeek = 1000*60*60*24*7;
+
 update()
 setTimeout(update, 1000);
 function update() {
@@ -9,10 +13,6 @@ function update() {
   displayTime()
   setTimeout(update, 1000);
 }
-
-oneHour = 1000*60*60;
-oneDay = 1000*60*60*24;
-oneWeek = 1000*60*60*24*7;
 
 function calculateTime() {
   today = new Date();
