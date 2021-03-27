@@ -10,13 +10,13 @@ setInterval(selectSprite, pageSettings.quoteTimer / 1.5);
 
 //Objects to store the state of each sprite
 spriteOne = {
-  active: 0
+  active: false
 }
 spriteTwo = {
-  active: 0
+  active: false
 }
 spriteThree = {
-  active: 0
+  active: false
 }
 
 //Pick and animate a random sprite when called
@@ -25,7 +25,7 @@ function selectSprite() {
   chooseSprite = Math.floor((Math.random() * 3) + 1) - 1;
   sprite = ["spriteOne", "spriteTwo", "spriteThree"][chooseSprite]
 
-  if (window[sprite].active == '0') {
+  if (window[sprite].active == false) {
     animateSprite(sprite, 'normal', pageSettings.spriteDuration)
     showQuote(sprite, quotes)
   }
@@ -44,9 +44,9 @@ function animateSprite(targetSprite, direction, duration) {
   });
   if (direction == 'normal') {
     //Set the targetSprite to active and start a timer to reverse it
-    window[targetSprite].active = '1'
+    window[targetSprite].active = true
     setTimeout( function () {animateSprite(targetSprite, 'reverse', pageSettings.spriteDuration)}, pageSettings.quoteTimer)
   } else {
-    window[targetSprite].active = '0'
+    window[targetSprite].active = false
   }
 }
