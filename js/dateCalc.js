@@ -8,14 +8,13 @@ const oneWeek = 1000*60*60*24*7;
 
 //Timer to refresh dates every 1 second
 update()
-setTimeout(update, 1000);
+setInterval(update, 1000);
 
 //Function to calculate and display information
 function update() {
   document.getElementById("todayDisplay").innerHTML = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
   calculateTime()
   displayTime()
-  setTimeout(update, 1000);
 }
 
 //Work out how long since event passed

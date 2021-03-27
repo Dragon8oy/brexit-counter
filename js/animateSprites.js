@@ -1,9 +1,12 @@
-//Hide all sprites, prepare quotes and begin the loop
+//Hide all sprites and prepare quotes
 animateSprite('spriteOne', 'reverse', pageSettings.spriteDuration / 2)
 animateSprite('spriteTwo', 'reverse', pageSettings.spriteDuration / 2)
 animateSprite('spriteThree', 'reverse', pageSettings.spriteDuration / 2)
 getQuoteList(false, '')
+
+//Begin loop to show sprites
 setTimeout(selectSprite, pageSettings.spriteDuration / 2);
+setInterval(selectSprite, pageSettings.quoteTimer / 1.5);
 
 //Objects to store the state of each sprite
 spriteOne = {
@@ -16,27 +19,19 @@ spriteThree = {
   active: 0
 }
 
+//Pick and animate a random sprite when called
+//After pageSettings.spriteDuration has passed, hide the sprite
 function selectSprite() {
-  chooseSprite = Math.floor((Math.random() * 3) + 1);
-  if (chooseSprite == '1') {
-    if (spriteOne.active == '0') {
-      animateSprite('spriteOne', 'normal', pageSettings.spriteDuration)
-      showQuote('spriteOne', quotes)
-    }
-  } else if (chooseSprite == '2') {
-    if (spriteTwo.active == '0') {
-      animateSprite('spriteTwo', 'normal', pageSettings.spriteDuration)
-      showQuote('spriteTwo', quotes)
-    }
-  } else if (chooseSprite == '3') {
-    if (spriteThree.active == '0') {
-      animateSprite('spriteThree', 'normal', pageSettings.spriteDuration)
-      showQuote('spriteThree', quotes)
-    }
+  chooseSprite = Math.floor((Math.random() * 3) + 1) - 1;
+  sprite = ["spriteOne", "spriteTwo", "spriteThree"][chooseSprite]
+
+  if (window[sprite].active == '0') {
+    animateSprite(sprite, 'normal', pageSettings.spriteDuration)
+    showQuote(sprite, quotes)
   }
-  setTimeout(selectSprite, pageSettings.quoteTimer / 1.5);
 }
 
+//Animate the given sprite
 function animateSprite(targetSprite, direction, duration) {
   document.getElementById(targetSprite).animate([
     { transform: 'translateY(500px)' }, //Start (Pixels off screen)
