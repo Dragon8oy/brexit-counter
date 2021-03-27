@@ -1,9 +1,11 @@
+//Hide all sprites, prepare quotes and begin the loop
 animateSprite('spriteOne', 'reverse', pageSettings.spriteDuration / 2)
 animateSprite('spriteTwo', 'reverse', pageSettings.spriteDuration / 2)
 animateSprite('spriteThree', 'reverse', pageSettings.spriteDuration / 2)
 getQuoteList(false, '')
 setTimeout(selectSprite, pageSettings.spriteDuration / 2);
 
+//Objects to store the state of each sprite
 spriteOne = {
   active: 0
 }

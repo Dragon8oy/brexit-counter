@@ -1,3 +1,4 @@
+//Return a list of quotes (fallback - whether or not the URL is a fallback (internal))
 function getQuoteList(fallback, quoteFileUrl) {
   if (fallback == false) {
     quoteFileUrl = window.location.href.replace("index.html", "") + 'assets/quotes.txt'
@@ -24,6 +25,7 @@ function getQuoteList(fallback, quoteFileUrl) {
   file.send(null);
 }
 
+//Pick a random quote, display it and start a timer to hide it
 function showQuote(targetSprite, quotes) {
   document.getElementById(targetSprite + 'Quote').classList.toggle('fade');
   document.getElementById(targetSprite + 'QuoteText').textContent = quotes[Math.floor(Math.random() * quotes.length)];

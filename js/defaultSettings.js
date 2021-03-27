@@ -1,3 +1,4 @@
+//Class constant to store settings
 const pageSettings = {
   title: "Post-Brexit Counter",
   pageHeading: "Post-Brexit Counter",

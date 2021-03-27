@@ -9,6 +9,7 @@ document.getElementById('eventTitle').innerHTML = pageSettings.eventTitle;
 setSlider()
 loadTheme()
 
+//Get the saved theme from local storage
 function readSavedTheme() {
   let theme = window.localStorage['theme'];
   if (theme == undefined) {
@@ -18,6 +19,7 @@ function readSavedTheme() {
   return theme
 }
 
+//Set the slider to the correct position, matching the theme
 function setSlider() {
   let theme = readSavedTheme()
   if (theme == 'dark') {
@@ -27,6 +29,7 @@ function setSlider() {
   }
 }
 
+//Update the theme in local storage and trigger a theme refresh
 function toggleTheme() {
   let theme = readSavedTheme()
   if (theme == 'dark') {
@@ -37,6 +40,7 @@ function toggleTheme() {
   loadTheme()
 }
 
+//Load the theme in local storage
 function loadTheme() {
   let theme = readSavedTheme();
   if (theme == 'dark') { //Set theme to dark
