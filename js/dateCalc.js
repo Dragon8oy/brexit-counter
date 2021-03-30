@@ -1,26 +1,32 @@
 //Display the date of the event
 today = new Date();
-document.getElementById("eventDisplay").innerHTML = pageSettings.eventDateString.getDate() + '/' + pageSettings.eventDateString.getMonth() + 1 + '/' + pageSettings.eventDateString.getFullYear();
+document.getElementById("eventDisplay").innerHTML = getDateString(pageSettings.eventDateString)
 
 const oneHour = 1000 * 60 * 60;
 const oneDay = oneHour * 24;
 const oneWeek = oneDay * 7;
-//const oneYear = oneWeek * 52
 
 //Timer to refresh dates every 1 second
 update()
 setInterval(update, 1000);
 
+function getDateString(dateObject) {
+  dateString = dateObject.getDate() + '/'
+  dateString += dateObject.getMonth() + 1 + '/'
+  dateString += dateObject.getFullYear();
+  return dateString
+}
+
 //Function to calculate and display information
 function update() {
-  document.getElementById("todayDisplay").innerHTML = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
-  calculateTime()
+  today = new Date();
+  document.getElementById("todayDisplay").innerHTML = getDateString(today)
+  calculateTime(today)
   displayTime()
 }
 
 //Work out how long since event passed
-function calculateTime() {
-  today = new Date();
+function calculateTime(today) {
   timeDiff = today.getTime() - pageSettings.eventDateString.getTime();
 
   //Work out years ago
