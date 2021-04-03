@@ -1,2 +1,2 @@
 # brexit-counter
- - [Webpage](https://dragon8oy.github.io/brexit-counter/) counting the weeks, days and hours ~~until~~ since Brexit
+ - [Webpage](https://stuarthayhurst.github.io/brexit-counter/) counting the weeks, days and hours ~~until~~ since Brexit
