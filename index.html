@@ -5,50 +5,50 @@
     <link rel="stylesheet" href="css/stylesheet.css">
     <link rel="stylesheet" href="css/themeSlider.css">
   </head>
-<body>
-<h1 id="pageHeading"></h1>
-<div style="position: absolute; width: 30%; left: 35%; right: 35%; top: 0%"><h2 id="pageBanner" style="text-align: center;"><h3 id="subPageBanner" style="text-align: center;"></h2></div>
-<div style="line-height: 3px; font-size: 20px;">
-  <p style="display: inline-block;">Today's date: </p> <p id="todayDisplay" style="display: inline-block;" > Loading...</p><br>
-  <p style="display: inline-block;" id="eventTitle"></p> <p id="eventDisplay" style="display: inline-block;" > Loading...</p><br>
-  <div style="height: 20px"></div>
+  <body>
+    <h1 id="pageHeading"></h1>
+    <div style="position: absolute; width: 30%; left: 35%; right: 35%; top: 0%"><h2 id="pageBanner" style="text-align: center;"><h3 id="subPageBanner" style="text-align: center;"></h2></div>
+    <div style="line-height: 3px; font-size: 20px;">
+      <p style="display: inline-block;">Today's date: </p> <p id="todayDisplay" style="display: inline-block;" > Loading...</p><br>
+      <p style="display: inline-block;" id="eventTitle"></p> <p id="eventDisplay" style="display: inline-block;" > Loading...</p><br>
+      <div style="height: 20px"></div>
 
-  <p id="yearsAgoHtmlTitle" style="display: inline-block;">Years ago: </p> <p id="yearsAgoHtml" style="display: inline-block;"> Loading...</p><br>
-  <p style="display: inline-block;">Weeks ago: </p> <p id="weeksAgoHtml" style="display: inline-block;"> Loading...</p><br>
-  <p style="display: inline-block;">Days ago: </p> <p id="daysAgoHtml" style="display: inline-block;"> Loading...</p><br>
-  <p style="display: inline-block;">Hours ago: </p> <p id="hoursAgoHtml" style="display: inline-block;"> Loading...</p><br>
-</div>
+      <p id="yearsAgoHtmlTitle" style="display: inline-block;">Years ago: </p> <p id="yearsAgoHtml" style="display: inline-block;"> Loading...</p><br>
+      <p style="display: inline-block;">Weeks ago: </p> <p id="weeksAgoHtml" style="display: inline-block;"> Loading...</p><br>
+      <p style="display: inline-block;">Days ago: </p> <p id="daysAgoHtml" style="display: inline-block;"> Loading...</p><br>
+      <p style="display: inline-block;">Hours ago: </p> <p id="hoursAgoHtml" style="display: inline-block;"> Loading...</p><br>
+    </div>
 
-<div class="themeToggle">
-  <h3>Dark theme: </h3>
-  <label class="switch">
-    <input type="checkbox" id="themeSlider" onclick="toggleTheme()">
-    <span class="slider round"></span>
-  </label>
-</div>
+    <div class="themeToggle">
+      <h3>Dark theme: </h3>
+      <label class="switch">
+        <input type="checkbox" id="themeSlider" onclick="toggleTheme()">
+        <span class="slider round"></span>
+      </label>
+    </div>
 
-<div class="spriteContainer">
-  <div class="spriteQuote" id=spriteOneQuote>
-    <img style="width: 100%; height: auto; min-width: 1px;" src="assets/quote.svg">
-    <p class="spriteQuoteText" id=spriteOneQuoteText></p>
-  </div>
-  <div class="spriteQuote" id=spriteTwoQuote>
-    <img style="width: 100%; height: auto; min-width: 1px;" src="assets/quote.svg">
-    <p class="spriteQuoteText" id=spriteTwoQuoteText></p>
-  </div>
-  <div class="spriteQuote" id=spriteThreeQuote>
-    <img style="width: 100%; height: auto; min-width: 1px;" src="assets/quote.svg">
-    <p class="spriteQuoteText" id=spriteThreeQuoteText></p>
-  </div>
-  <img class="sprites" id=spriteOne src="assets/spriteOne.png">
-  <img class="sprites" id=spriteTwo src="assets/spriteTwo.png">
-  <img class="sprites" id=spriteThree src="assets/spriteThree.png">
-</div>
+    <div class="spriteContainer">
+      <div class="spriteQuote" id=spriteOneQuote>
+        <img style="width: 100%; height: auto; min-width: 1px;" src="assets/quote.svg">
+        <p class="spriteQuoteText" id=spriteOneQuoteText></p>
+      </div>
+      <div class="spriteQuote" id=spriteTwoQuote>
+        <img style="width: 100%; height: auto; min-width: 1px;" src="assets/quote.svg">
+        <p class="spriteQuoteText" id=spriteTwoQuoteText></p>
+      </div>
+      <div class="spriteQuote" id=spriteThreeQuote>
+        <img style="width: 100%; height: auto; min-width: 1px;" src="assets/quote.svg">
+        <p class="spriteQuoteText" id=spriteThreeQuoteText></p>
+      </div>
+      <img class="sprites" id=spriteOne src="assets/spriteOne.png">
+      <img class="sprites" id=spriteTwo src="assets/spriteTwo.png">
+      <img class="sprites" id=spriteThree src="assets/spriteThree.png">
+    </div>
 
-<script src=js/defaultSettings.js>//Default game and page settings</script>
-<script src=js/loadTheme.js>//Load page theme and graphics</script>
-<script src=js/dateCalc.js>//Date calculation logic</script>
-<script src=js/quotes.js> //Fetch and display quotes</script>
-<script src=js/animateSprites.js>//Run animations for the sprites</script>
-</body>
+    <script src=js/defaultSettings.js>//Default game and page settings</script>
+    <script src=js/loadTheme.js>//Load page theme and graphics</script>
+    <script src=js/dateCalc.js>//Date calculation logic</script>
+    <script src=js/quotes.js> //Fetch and display quotes</script>
+    <script src=js/animateSprites.js>//Run animations for the sprites</script>
+  </body>
 </html>
