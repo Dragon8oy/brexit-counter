@@ -44,10 +44,10 @@ function toggleTheme() {
 function loadTheme() {
   let theme = readSavedTheme();
   if (theme == 'dark') { //Set theme to dark
-    document.body.style.backgroundColor = pageSettings.darkTheme.backgroundColour;
-    document.body.style.color = pageSettings.darkTheme.textColour;
+    themeSettings.selectedTheme = themeSettings.darkTheme;
   } else { //Set theme to light
-    document.body.style.backgroundColor = pageSettings.lightTheme.backgroundColour;
-    document.body.style.color = pageSettings.lightTheme.textColour;
+    themeSettings.selectedTheme = themeSettings.lightTheme;
   }
+  document.body.style.backgroundColor = themeSettings.selectedTheme.backgroundColour;
+  document.body.style.color = themeSettings.selectedTheme.textColour;
 }
